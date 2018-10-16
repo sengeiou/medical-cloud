@@ -1,0 +1,27 @@
+server:
+  port: 9002
+logging:
+  level:
+    tk:
+      mybatis: TRACE
+
+spring:
+  application:
+    name: SpringBootAdminServer
+  output:
+      ansi:
+        enabled:  ALWAYS
+  boot:
+    admin:
+      turbine:
+        clusters: default
+        url:  http://localhost:8031/turbine.stream
+      routes:
+        endpoints: env,metrics,trace,dump,jolokia,info,configprops,trace,logfile,refresh,flyway,liquibase,heapdump,activiti
+eureka:
+    instance:
+      lease-renewal-interval-in-seconds:  30
+    client:
+      registry-fetch-interval-seconds:  15
+      service-url:
+        defaultZone:  http://localhost:9003/eureka/
