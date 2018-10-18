@@ -1,0 +1,35 @@
+server.port:  9005
+spring:
+  application:
+    name: zuul-server
+  boot:
+    admin:
+      url:  http://localhost:9002
+
+eureka:
+    instance:
+      lease-renewal-interval-in-seconds: 30
+    client:
+      registry-fetch-interval-seconds: 15
+      service-url:
+        defaultZone:  http://localhost:9003/eureka/
+
+
+#Error: {"timestamp":1502748955345,"status":401,"error":"Unauthorized","message":"Full authentication is required to access this resource.","path":"/env"}
+#Error: {"timestamp":1502748975573,"status":401,"error":"Unauthorized","message":"Full authentication is required to access this resource.","path":"/metrics"}
+#resolved up problems
+management.security.enabled: false
+
+
+# routes to serviceId,simple cases,wo usually use eureka client to discovery the service instead of to configure it like down below
+#zuul.routes.account.path=/acc/**
+#zuul.routes.account.serviceId=ACCOUNT-SERVICE
+
+#zuul.routes.product.path=/prd/**
+#zuul.routes.product.serviceId=product-service
+
+#zuul.routes.pay.path=/pay/**
+#zuul.routes.pay.serviceId=payment-service
+
+#zuul.routes.order.path=/order/**
+#zuul.routes.order.serviceId=order-service

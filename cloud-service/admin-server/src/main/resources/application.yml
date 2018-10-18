@@ -7,7 +7,7 @@ logging:
 
 spring:
   application:
-    name: SpringBootAdminServer
+    name: admin-server
   output:
       ansi:
         enabled:  ALWAYS
@@ -19,9 +19,9 @@ spring:
       routes:
         endpoints: env,metrics,trace,dump,jolokia,info,configprops,trace,logfile,refresh,flyway,liquibase,heapdump,activiti
 eureka:
-    instance:
-      lease-renewal-interval-in-seconds:  30
-    client:
-      registry-fetch-interval-seconds:  15
-      service-url:
-        defaultZone:  http://localhost:9003/eureka/
+  instance:
+    lease-renewal-interval-in-seconds:  30
+  client:
+    registry-fetch-interval-seconds:  15
+    service-url:
+      defaultZone:  http://localhost:9003/eureka/

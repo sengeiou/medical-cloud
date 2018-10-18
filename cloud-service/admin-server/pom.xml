@@ -4,14 +4,14 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>cloud-service</artifactId>
-        <groupId>com.zhou</groupId>
+        <groupId>com.zhou.medical.cloud</groupId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.zhou</groupId>
+    <groupId>com.zhou.medical.cloud.admin</groupId>
     <artifactId>admin-server</artifactId>
-    <name>adminServer</name>
+    <name>admin-Server</name>
     <description>服务监控</description>
 
     <properties>
@@ -45,7 +45,7 @@
         <dependency>
             <groupId>de.codecentric</groupId>
             <artifactId>spring-boot-admin-server</artifactId>
-            <version>1.5.4</version>
+            <version>1.4.6</version>
         </dependency>
         <dependency>
             <groupId>de.codecentric</groupId>
@@ -72,6 +72,7 @@
             <version>5.0.5.RELEASE</version>
         </dependency>
     </dependencies>
+
     <dependencyManagement>
         <dependencies>
             <dependency>

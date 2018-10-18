@@ -1,0 +1,14 @@
+server.port: 9006
+spring:
+  application.name: hystrix-dashboard
+  boot:
+    admin:
+      url: http://localhost:9002
+
+eureka:
+    instance:
+      lease-renewal-interval-in-seconds:  30
+    client:
+      registry-fetch-interval-seconds:  15
+      service-url:
+        defaultZone:  http://localhost:9003/eureka/

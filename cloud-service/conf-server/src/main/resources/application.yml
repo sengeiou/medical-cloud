@@ -1,23 +1,16 @@
-server:
-  port: 9004
-logging:
-  level:
-    tk:
-      mybatis:  TRACE
-
+server.port: 9004
 spring:
   application:
     name: config-server
-  cloud:
-    config:
+  boot:
+    admin:
+      url:  http://localhost:9002
+  cloud.config:
       server:
         git:
           uri: https://github.com/backkoms/spring-cloud-repo
         searchPaths: repo
       label:  master
-  boot:
-    admin:
-      url:  http://localhost:9002
 
   rabbitmq:
     host: localhost
@@ -26,9 +19,13 @@ spring:
     password: guest
 
 eureka:
-  client:
-    serviceUrl:
-      defaultZone:  http://localhost:9003/eureka/
+    instance:
+      lease-renewal-interval-in-seconds: 30
+    client:
+      registry-fetch-interval-seconds: 15
+      service-url:
+        defaultZone:  http://localhost:9003/eureka/
+
 management:
   security:
     enabled:  false
@@ -38,3 +35,8 @@ security:
   user:
     name: user
     password: yourPW
+
+logging:
+  level:
+    tk:
+      mybatis:  TRACE

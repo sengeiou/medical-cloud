@@ -1,0 +1,20 @@
+server.port: 9007
+spring:
+  application:
+    name: turbine-server
+  boot:
+      admin:
+        url:  http://localhost:9002
+turbine:
+  app-config: eureka-consumer-ribbon-hystrix
+  cluster-name-expression: "default"
+  combine-host-por: true
+
+#must dependent eureka server , it used be as service cluster monitor
+eureka:
+    instance:
+      lease-renewal-interval-in-seconds: 30
+    client:
+      registry-fetch-interval-seconds: 15
+      service-url:
+        defaultZone:  http://localhost:9003/eureka/

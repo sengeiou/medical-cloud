@@ -5,12 +5,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.zhou</groupId>
+        <groupId>com.zhou.medical</groupId>
         <artifactId>medical-cloud</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <groupId>com.zhou</groupId>
+    <groupId>com.zhou.medical.cloud</groupId>
     <artifactId>cloud-service</artifactId>
     <packaging>pom</packaging>
     <modules>
@@ -21,6 +21,5 @@
         <module>admin-server</module>
         <module>hystrix-dashboard</module>
         <module>turbine-server</module>
-        <module>admin-server</module>
     </modules>
 </project>

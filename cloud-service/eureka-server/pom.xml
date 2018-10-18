@@ -4,14 +4,13 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>cloud-service</artifactId>
-        <groupId>com.zhou</groupId>
+        <groupId>com.zhou.medical.cloud</groupId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-
+    <groupId>com.zhou.medical.cloud.eureka</groupId>
     <artifactId>eureka-server</artifactId>
-
-    <name>eurekaServer</name>
+    <name>eureka-Server</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
