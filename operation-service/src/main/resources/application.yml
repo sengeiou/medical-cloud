@@ -1,0 +1,6 @@
+spring:
+  profiles:
+    active: dev
+
+#启动命令
+#java -jar -Dspring.profiles.active=prod hsp-operation-service.jar >service.log 2>&1 &
