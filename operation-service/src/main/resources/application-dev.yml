@@ -30,6 +30,9 @@ spring:
         client:
           service-base-url: http://localhost:9002
         url:  http://localhost:9002
+  zipkin:
+    base-url: http://localhost:9001
+
 eureka:
     instance:
       lease-renewal-interval-in-seconds: 30

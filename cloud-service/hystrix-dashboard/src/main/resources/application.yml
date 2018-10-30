@@ -1,4 +1,5 @@
 server.port: 9006
+
 spring:
   application.name: hystrix-dashboard
   boot:

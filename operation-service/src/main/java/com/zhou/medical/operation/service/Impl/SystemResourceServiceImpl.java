@@ -135,6 +135,7 @@ public class SystemResourceServiceImpl extends GenericServiceImpl<SystemResource
 
 	@Override
 	public List<SystemResource> findResourceUrlListByRoleId(Integer roleId) {
+        System.out.println("roleId：：：：：：：："+roleId);
 		return getList("findResourceUrlListByRoleId", roleId);
 	}
 

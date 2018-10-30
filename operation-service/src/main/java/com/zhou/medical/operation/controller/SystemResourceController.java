@@ -1,182 +1,67 @@
 package com.zhou.medical.operation.controller;
 
-import com.zhou.medical.common.entity.MessageCode;
-import com.zhou.medical.common.entity.Results;
 import com.zhou.medical.common.entity.Tree;
 import com.zhou.medical.common.entity.manager.SystemResource;
 import com.zhou.medical.operation.service.ISystemResourceService;
-import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-import java.util.Date;
+import org.springframework.web.bind.annotation.RestController;
+
 import java.util.List;
-import java.util.Map;
 
 /**
  * 系统资源
- * 
- * @author zds
  *
+ * @author zds
  */
-@Controller
-@RequestMapping("/sys/systemResource")
+@RestController
+@RequestMapping("/systemResource")
 public class SystemResourceController {
-
-	// 输出日志
-	private static Logger log = Logger.getLogger(SystemResourceController.class);
 
     @Autowired
     private ISystemResourceService systemResourceService;
 
-    /**
-     * 用户管理页
-     *
-     * @return
-     */
-    @RequestMapping(value = "/manager", method = RequestMethod.GET)
-    public String manager() {
-        return "/sys/admin/resource";
+    @RequestMapping(value = "getList")
+    public List<SystemResource> getList(String mapperId,@RequestBody SystemResource systemResource) {
+        return systemResourceService.getList(mapperId, systemResource);
     }
 
-    /**
-     * 用户管理页
-     *
-     * @return
-     */
-    @RequestMapping(value = "/findTreeGrid", method = RequestMethod.POST)
-    @ResponseBody
-    public List<SystemResource> findTreeGrid() {
-        List<SystemResource> treeGrid = systemResourceService.getList("selectAll", null);
-        
-        return treeGrid;
+    @RequestMapping(value = "insert")
+    public Integer insert(@RequestBody SystemResource systemResource) {
+        return systemResourceService.insert(systemResource);
     }
 
-    /**
-     * 跳转新增页面
-     *
-     * @return
-     */
-    @RequestMapping("/addPage")
-    public String addPage() {
-        return "/sys/admin/resourceAdd";
-    }
-
-    /**
-     * 新增资源
-     *
-     * @param resource
-     * @return
-     */
-    @RequestMapping("/add")
-    @ResponseBody
-    public Results<Map<String, Object>> add(SystemResource resource) {
-    	Results<Map<String, Object>> results = new Results<Map<String, Object>>();
-		
-        try {
-        	resource.setCreatetime(new Date());
-        	systemResourceService.insert(resource);
-        	
-            results.setCode(MessageCode.CODE_200);
-			results.setMessage(MessageCode.MESSAGE_200);
-            return results;
-        } catch (RuntimeException e) {
-        	results.setCode(MessageCode.CODE_501);
-			results.setMessage(MessageCode.MESSAGE_501);
-            return results;
-        }
-    }
-
-    /**
-     * 列出所有菜单树
-     *
-     * @return
-     */
-    @RequestMapping("/showAllTree")
-    @ResponseBody
-    public List<Tree> showAllTree() {
+    @RequestMapping(value = "findAllTree")
+    public List<Tree> findAllTree() {
         return systemResourceService.findAllTree();
     }
 
-    /**
-     *
-     * @return
-     */
-    @RequestMapping(value = "/showAllTrees", method = RequestMethod.POST)
-    @ResponseBody
-    public List<Tree> showAllTrees() {
+    @RequestMapping(value = "findAllTrees")
+    public List<Tree> findAllTrees() {
         return systemResourceService.findAllTrees();
     }
 
-    /**
-     * 编辑资源跳转页面
-     * @param model
-     * @param id
-     * @return
-     */
-    @RequestMapping("/editPage")
-    public String editPage(Model model, int id) {
-        SystemResource systemResource = systemResourceService.findById("selectByPrimaryKey", id);
-		model.addAttribute("systemResource", systemResource);
-        return "/sys/admin/resourceEdit";
+    @RequestMapping(value = "findById")
+    public SystemResource findById(String mapperId, Integer id) {
+        return systemResourceService.findById(mapperId, id);
     }
 
-    /**
-     * 编辑资源
-     *
-     * @param resource
-     * @return
-     */
-    @RequestMapping("/edit")
-    @ResponseBody
-    public Results<Map<String, Object>> edit(SystemResource resource) {
-    	Results<Map<String, Object>> results = new Results<Map<String, Object>>();
-    	
-        try {
-            resource.setUpdatetime(new Date());
-        	systemResourceService.update("updateByPrimaryKeySelective", resource);
-            
-            results.setCode(MessageCode.CODE_200);
-			results.setMessage(MessageCode.MESSAGE_200);
-            return results;
-        } catch (RuntimeException e) {
-        	results.setCode(MessageCode.CODE_501);
-			results.setMessage(MessageCode.MESSAGE_501);
-            return results;
-        }
+    @RequestMapping(value = "update")
+    public Integer update(String mapperId, @RequestBody SystemResource systemResource) {
+        return systemResourceService.update(mapperId, systemResource);
     }
 
-    /**
-     * 删除资源
-     *
-     * @param id
-     * @return
-     */
-    @RequestMapping("/delete")
-    @ResponseBody
-    public Results<Map<String, Object>> delete(int id) {
-    	Results<Map<String, Object>> results = new Results<Map<String, Object>>();
-    	
-        try {
-        	SystemResource systemResource = systemResourceService.findById("selectByPrimaryKey", id);
-			if (systemResource != null) {
-				//先删除子菜单
-//				systemResourceService.delete("deleteResourceByPid", systemResource);
-				//再删除父菜单
-				systemResourceService.delete("deleteByPrimaryKey", systemResource);
-			}
-            
-            results.setCode(MessageCode.CODE_200);
-			results.setMessage(MessageCode.MESSAGE_200);
-            return results;
-        } catch (RuntimeException e) {
-        	results.setCode(MessageCode.CODE_501);
-			results.setMessage(MessageCode.MESSAGE_501);
-            return results;
-        }
+    @RequestMapping(value = "delete")
+    public Integer delete(String mapperId, @RequestBody SystemResource systemResource) {
+        return systemResourceService.delete(mapperId, systemResource);
     }
+
+    @RequestMapping(value = "findResourceUrlListByRoleId")
+    public List<SystemResource> findResourceUrlListByRoleId(Integer roleId) {
+        System.out.println("findResourceUrlListByRoleIdfindResourceUrlListByRoleIdfindResourceUrlListByRoleId:" + roleId);
+        return systemResourceService.getList("findResourceUrlListByRoleId", roleId);
+    }
+
 
 }
