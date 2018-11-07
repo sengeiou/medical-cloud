@@ -1,8 +1,7 @@
 package com.zhou.medical.operation.controller;
 
 import com.zhou.medical.common.entity.Pager;
-import com.zhou.medical.common.entity.manager.SystemRole;
-import com.zhou.medical.common.entity.manager.SystemUser;
+import com.zhou.medical.common.entity.operation.SystemUser;
 import com.zhou.medical.operation.service.ISystemUserService;
 import org.springframework.web.bind.annotation.*;
 

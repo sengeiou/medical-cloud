@@ -2,7 +2,7 @@
          pageEncoding="UTF-8" %>
 <%@ page import="java.util.*" %>
 <%@ page import="java.sql.*" %>
-<%@ page import="com.zhou.medical.common.entity.manager.SystemUser" %>
+<%@ page import="com.zhou.medical.common.entity.operation.SystemUser" %>
 <%@ include file="/commons/global.jsp" %>
 <!DOCTYPE html>
 <html>
@@ -384,20 +384,20 @@
                         </a>
                     </div>
                 </shiro:hasPermission>
-                <%-- <shiro:hasPermission name="/crm/favorMedia/manager.action">
+                <%-- <shiro:hasPermission name="/crm/favorMedia/log.action">
                 <div class="nav-item"
                     style="margin-top: 2px; margin-bottom: 2px; border-bottom: 1px solid #d6d6d6;">
                     <a
-                        href="javascript:addTab('用户收藏管理','${path}/crm/favorMedia/manager.action','menu_icon_datadeal')">
+                        href="javascript:addTab('用户收藏管理','${path}/crm/favorMedia/log.action','menu_icon_datadeal')">
                         <span class="menu_icon_datadeal"></span> <span>患者消息管理</span>
                     </a>
                 </div>
                 </shiro:hasPermission>
-                <shiro:hasPermission name="/crm/suitMediaCategory/manager.action">
+                <shiro:hasPermission name="/crm/suitMediaCategory/log.action">
                 <div class="nav-item"
                     style="margin-top: 2px; margin-bottom: 2px; border-bottom: 1px solid #d6d6d6;">
                     <a
-                        href="javascript:addTab('用户订制管理','${path}/crm/suitMediaCategory/manager.action','menu_icon_datadeal')">
+                        href="javascript:addTab('用户订制管理','${path}/crm/suitMediaCategory/log.action','menu_icon_datadeal')">
                         <span class="menu_icon_datadeal"></span> <span>签约管理</span>
                     </a>
                 </div>
@@ -409,21 +409,21 @@
                <div class="nav-item"
                    style="margin-top: 2px; margin-bottom: 2px; border-bottom: 1px solid #d6d6d6;">
                    <a
-                       href="javascript:addTab('APP用户信息','${path}/crm/user/manager.do','menu_icon_datadeal')">
+                       href="javascript:addTab('APP用户信息','${path}/crm/user/log.do','menu_icon_datadeal')">
                        <span class="menu_icon_datadeal"></span> <span>助理申请</span>
                    </a>
                </div>
                <div class="nav-item"
                    style="margin-top: 2px; margin-bottom: 2px; border-bottom: 1px solid #d6d6d6;">
                    <a
-                       href="javascript:addTab('用户收藏管理','${path}/crm/favorMedia/manager.do','menu_icon_datadeal')">
+                       href="javascript:addTab('用户收藏管理','${path}/crm/favorMedia/log.do','menu_icon_datadeal')">
                        <span class="menu_icon_datadeal"></span> <span>助理档案</span>
                    </a>
                </div>
                <div class="nav-item"
                    style="margin-top: 2px; margin-bottom: 2px; border-bottom: 1px solid #d6d6d6;">
                    <a
-                       href="javascript:addTab('用户订制管理','${path}/crm/suitMediaCategory/manager.do','menu_icon_datadeal')">
+                       href="javascript:addTab('用户订制管理','${path}/crm/suitMediaCategory/log.do','menu_icon_datadeal')">
                        <span class="menu_icon_datadeal"></span> <span>助理服务记录</span>
                    </a>
                </div>

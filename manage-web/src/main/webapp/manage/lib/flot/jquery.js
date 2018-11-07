@@ -7834,7 +7834,7 @@ jQuery.fx.prototype = {
 					} );
 				}
 
-				// Hide the element if the "hide" operation was done
+				// Hide the element if the "hide" log was done
 				if ( this.options.hide ) {
 					jQuery(this.elem).hide();
 				}

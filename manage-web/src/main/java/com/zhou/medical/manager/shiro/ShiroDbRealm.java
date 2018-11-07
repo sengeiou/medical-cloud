@@ -1,9 +1,9 @@
 package com.zhou.medical.manager.shiro;
 
-import com.zhou.medical.common.entity.manager.SystemResource;
-import com.zhou.medical.common.entity.manager.SystemUser;
-import com.zhou.medical.manager.client.SystemResourceFeignClient;
-import com.zhou.medical.manager.client.SystemUserFeignClient;
+import com.zhou.medical.common.entity.operation.SystemResource;
+import com.zhou.medical.common.entity.operation.SystemUser;
+import com.zhou.medical.manager.client.operation.SystemResourceFeignClient;
+import com.zhou.medical.manager.client.operation.SystemUserFeignClient;
 import org.apache.commons.lang.StringUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;

@@ -2,7 +2,7 @@ server:
   #端口号
   port: 9001
 #项目名，如果不设定，默认是 /
-#  context-path: /operation-service
+#  context-path: /log-service
 
 spring:
   datasource:

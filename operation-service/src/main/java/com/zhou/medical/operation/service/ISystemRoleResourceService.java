@@ -1,6 +1,6 @@
 package com.zhou.medical.operation.service;
 
-import com.zhou.medical.common.entity.manager.SystemRoleResource;
+import com.zhou.medical.common.entity.operation.SystemRoleResource;
 import com.zhou.medical.dao.service.GenericService;
 
 import java.util.List;

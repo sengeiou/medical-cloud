@@ -1,6 +1,6 @@
 package com.zhou.medical.operation.service.Impl;
 
-import com.zhou.medical.common.entity.manager.SystemRole;
+import com.zhou.medical.common.entity.operation.SystemRole;
 import com.zhou.medical.dao.service.Impl.GenericServiceImpl;
 import com.zhou.medical.operation.service.ISystemRoleService;
 import org.springframework.stereotype.Service;

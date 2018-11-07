@@ -1,6 +1,6 @@
 package com.zhou.medical.operation.service.Impl;
 
-import com.zhou.medical.common.entity.manager.SystemUser;
+import com.zhou.medical.common.entity.operation.SystemUser;
 import com.zhou.medical.dao.service.Impl.GenericServiceImpl;
 import com.zhou.medical.operation.service.ISystemUserService;
 import org.springframework.stereotype.Service;

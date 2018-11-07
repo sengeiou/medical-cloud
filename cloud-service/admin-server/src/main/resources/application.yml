@@ -15,7 +15,7 @@ spring:
     admin:
       turbine:
         clusters: default
-        url:  http://localhost:8031/turbine.stream
+        url:  http://192.168.3.100:8031/turbine.stream
       routes:
         endpoints: env,metrics,trace,dump,jolokia,info,configprops,trace,logfile,refresh,flyway,liquibase,heapdump,activiti
 eureka:
@@ -24,4 +24,4 @@ eureka:
   client:
     registry-fetch-interval-seconds:  15
     service-url:
-      defaultZone:  http://localhost:9003/eureka/
+      defaultZone:  http://192.168.3.100:9003/eureka/

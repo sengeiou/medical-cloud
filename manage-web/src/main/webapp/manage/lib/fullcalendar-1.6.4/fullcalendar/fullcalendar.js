@@ -4025,7 +4025,7 @@ function AgendaEventRenderer() {
 	
 	
 	// when event starts out FULL-DAY
-	// overrides DayEventRenderer's version because it needs to account for dragging elements
+	// overrides DayEventRenderer's version because it needs to doctor for dragging elements
 	// to and from the slot area.
 	
 	function draggableDayEvent(event, eventElement, seg) {
@@ -4298,7 +4298,7 @@ function AgendaEventRenderer() {
 				trigger('eventResizeStart', this, event, ev, ui);
 			},
 			resize: function(ev, ui) {
-				// don't rely on ui.size.height, doesn't take grid into account
+				// don't rely on ui.size.height, doesn't take grid into doctor
 				snapDelta = Math.round((Math.max(snapHeight, eventElement.height()) - ui.originalSize.height) / snapHeight);
 				if (snapDelta != prevSnapDelta) {
 					timeElement.text(
@@ -4822,7 +4822,7 @@ function View(element, calendar, viewName) {
 	// For determining how a given "cell" translates into a "date":
 	//
 	// 1. Convert the "cell" (row and column) into a "cell offset" (the # of the cell, cronologically from the first).
-	//    Keep in mind that column indices are inverted with isRTL. This is taken into account.
+	//    Keep in mind that column indices are inverted with isRTL. This is taken into doctor.
 	//
 	// 2. Convert the "cell offset" to a "day offset" (the # of days since the first visible day in the view).
 	//
@@ -5491,7 +5491,7 @@ function DayEventRenderer() {
 					)
 				);
 
-				// adjust the columns to account for the segment's height
+				// adjust the columns to doctor for the segment's height
 				for (var colI=segment.leftCol; colI<=segment.rightCol; colI++) {
 					colHeights[colI] = segment.top + segment.outerHeight;
 				}

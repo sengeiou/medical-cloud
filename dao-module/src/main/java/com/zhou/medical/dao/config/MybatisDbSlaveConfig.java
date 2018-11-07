@@ -1,5 +1,7 @@
 package com.zhou.medical.dao.config;
 
+import com.zhou.medical.dao.inter.PagableInterceptor;
+import org.apache.ibatis.plugin.Interceptor;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.SqlSessionTemplate;
@@ -11,6 +13,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 
 import javax.sql.DataSource;
+import java.util.Properties;
 
 /**
  * @author zhouzhou
@@ -29,6 +32,7 @@ public class MybatisDbSlaveConfig {
         SqlSessionFactoryBean factoryBean = new SqlSessionFactoryBean();
         factoryBean.setDataSource(slaveDataSource);
         factoryBean.setMapperLocations(new PathMatchingResourcePatternResolver().getResources("classpath:mapper/*.xml"));
+        factoryBean.setPlugins(new Interceptor[]{slaveSqlStatsInterceptor()});
         return factoryBean.getObject();
 
     }
@@ -38,6 +42,15 @@ public class MybatisDbSlaveConfig {
         // 使用上面配置的Factory
         SqlSessionTemplate template = new SqlSessionTemplate(slaveSqlSessionFactory());
         return template;
+    }
+
+    @Bean(name = "slaveSqlStatsInterceptor")
+    public PagableInterceptor slaveSqlStatsInterceptor(){
+        PagableInterceptor sqlStatsInterceptor = new PagableInterceptor();
+        Properties properties = new Properties();
+        properties.setProperty("dialect", "mysql");
+        sqlStatsInterceptor.setProperties(properties);
+        return sqlStatsInterceptor;
     }
 
 }

@@ -1,7 +1,7 @@
 package com.zhou.medical.operation.service.Impl;
 
 import com.zhou.medical.common.entity.Tree;
-import com.zhou.medical.common.entity.manager.SystemResource;
+import com.zhou.medical.common.entity.operation.SystemResource;
 import com.zhou.medical.dao.service.Impl.GenericServiceImpl;
 import com.zhou.medical.operation.service.ISystemResourceService;
 import org.springframework.stereotype.Service;

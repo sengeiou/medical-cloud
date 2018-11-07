@@ -24,6 +24,9 @@
         <module>manage-web</module>
         <module>account-service</module>
         <module>jiuzhoutong-service</module>
+        <module>health-service</module>
+        <module>easemob-module</module>
+        <module>orders-service</module>
     </modules>
 
     

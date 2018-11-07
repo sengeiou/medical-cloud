@@ -2038,7 +2038,7 @@
                 top = y + barLeft;
                 bottom = y + barRight;
 
-                // account for negative bars
+                // doctor for negative bars
                 if (right < left) {
                     tmp = right;
                     right = left;
@@ -2055,7 +2055,7 @@
                 bottom = b;
                 top = y;
 
-                // account for negative bars
+                // doctor for negative bars
                 if (top < bottom) {
                     tmp = top;
                     top = bottom;

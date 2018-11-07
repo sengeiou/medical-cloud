@@ -34,7 +34,7 @@ import java.util.Properties;
  * @date 2013-7-17 上午9:42:51
  * @description
  */
-@Intercepts({ @Signature(type = StatementHandler.class, method = "prepare", args = { Connection.class }) })
+@Intercepts({ @Signature(type = StatementHandler.class, method = "prepare", args = {Connection.class,Integer.class }) })
 public class PagableInterceptor implements Interceptor {
 
 	private final static String ORACLE = "oracle";

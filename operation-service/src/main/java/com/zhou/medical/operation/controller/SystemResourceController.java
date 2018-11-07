@@ -1,7 +1,7 @@
 package com.zhou.medical.operation.controller;
 
 import com.zhou.medical.common.entity.Tree;
-import com.zhou.medical.common.entity.manager.SystemResource;
+import com.zhou.medical.common.entity.operation.SystemResource;
 import com.zhou.medical.operation.service.ISystemResourceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;

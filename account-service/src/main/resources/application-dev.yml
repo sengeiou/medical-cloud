@@ -2,7 +2,7 @@ server:
   #端口号
   port: 8002
   #项目名，如果不设定，默认是 /
-#  context-path: /operation-service
+#  context-path: /log-service
 
 spring:
   application:
@@ -28,10 +28,10 @@ spring:
   boot:
       admin:
         client:
-          service-base-url: http://localhost:9002
-        url:  http://localhost:9002
+          service-base-url: http://127.0.0.1:9002
+        url:  http://127.0.0.1:9002
   zipkin:
-    base-url: http://localhost:9001
+    base-url: http://127.0.0.1:9001
 
 eureka:
     instance:
@@ -39,7 +39,7 @@ eureka:
     client:
       registry-fetch-interval-seconds: 15
       service-url:
-        defaultZone:  http://localhost:9003/eureka/
+        defaultZone:  http://127.0.0.1:9003/eureka/
 
 management:
   security:

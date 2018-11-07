@@ -1,7 +1,7 @@
 package com.zhou.medical.operation.controller;
 
 import com.zhou.medical.common.entity.Pager;
-import com.zhou.medical.common.entity.manager.PackageVersionDoctor;
+import com.zhou.medical.common.entity.operation.PackageVersionDoctor;
 import com.zhou.medical.operation.service.IPackageVersionDoctorService;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,7 +22,6 @@ public class DoctorApkController {
 
     @RequestMapping(value = "findByParam")
     public PackageVersionDoctor findByParam(String mapperId, @RequestBody PackageVersionDoctor packageVersionDoctor) {
-        System.out.println("findByParamfindByParamfindByParamfindByParamfindByParamfindByParamfindByParam");
         return packageVersionDoctorService.findByParam(mapperId, packageVersionDoctor);
     }
 

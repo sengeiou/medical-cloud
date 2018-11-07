@@ -4,7 +4,7 @@ spring:
     name: config-server
   boot:
     admin:
-      url:  http://localhost:9002
+      url:  http://192.168.3.100:9002
   cloud.config:
       server:
         git:
@@ -24,11 +24,11 @@ eureka:
     client:
       registry-fetch-interval-seconds: 15
       service-url:
-        defaultZone:  http://localhost:9003/eureka/
+        defaultZone:  http://192.168.3.100:9003/eureka/
 
 management:
   security:
-    enabled:  false
+    enabled: false
 
 #enforce config-service security
 security:

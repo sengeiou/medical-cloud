@@ -1,6 +1,6 @@
 package com.zhou.medical.operation.service.Impl;
 
-import com.zhou.medical.common.entity.manager.SystemRoleResource;
+import com.zhou.medical.common.entity.operation.SystemRoleResource;
 import com.zhou.medical.dao.service.Impl.GenericServiceImpl;
 import com.zhou.medical.operation.service.ISystemRoleResourceService;
 import org.apache.commons.lang.StringUtils;

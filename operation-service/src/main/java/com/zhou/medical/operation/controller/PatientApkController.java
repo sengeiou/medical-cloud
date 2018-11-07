@@ -1,9 +1,8 @@
 package com.zhou.medical.operation.controller;
 
 import com.zhou.medical.common.entity.Pager;
-import com.zhou.medical.common.entity.manager.PackageVersionPatient;
+import com.zhou.medical.common.entity.operation.PackageVersionPatient;
 import com.zhou.medical.operation.service.IPackageVersionPatientService;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

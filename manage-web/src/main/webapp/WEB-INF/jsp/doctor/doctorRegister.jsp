@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ page import="java.util.*" %>
 <%@ page import="java.sql.*" %>	
-<%@ page import="com.cmcc.medicalcare.model.SystemUser" %>	
+<%@ page import="com.zhou.medical.common.entity.operation.SystemUser" %>
 <%@ include file="/commons/global.jsp"%>
 <!DOCTYPE html>
 <html>

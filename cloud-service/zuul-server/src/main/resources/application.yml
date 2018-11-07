@@ -4,7 +4,7 @@ spring:
     name: zuul-server
   boot:
     admin:
-      url:  http://localhost:9002
+      url:  http://192.168.3.100:9002
 
 eureka:
     instance:
@@ -12,7 +12,7 @@ eureka:
     client:
       registry-fetch-interval-seconds: 15
       service-url:
-        defaultZone:  http://localhost:9003/eureka/
+        defaultZone:  http://192.168.3.100:9003/eureka/
 
 
 #Error: {"timestamp":1502748955345,"status":401,"error":"Unauthorized","message":"Full authentication is required to access this resource.","path":"/env"}
@@ -22,8 +22,8 @@ management.security.enabled: false
 
 
 # routes to serviceId,simple cases,wo usually use eureka client to discovery the service instead of to configure it like down below
-#zuul.routes.account.path=/acc/**
-#zuul.routes.account.serviceId=ACCOUNT-SERVICE
+#zuul.routes.doctor.path=/acc/**
+#zuul.routes.doctor.serviceId=ACCOUNT-SERVICE
 
 #zuul.routes.product.path=/prd/**
 #zuul.routes.product.serviceId=product-service

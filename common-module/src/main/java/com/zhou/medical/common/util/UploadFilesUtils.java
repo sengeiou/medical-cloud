@@ -1,5 +1,6 @@
 package com.zhou.medical.common.util;
 
+import com.zhou.medical.common.config.Config;
 import com.zhou.medical.common.entity.UserInfo;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
@@ -10,7 +11,7 @@ import java.net.URL;
 
 /**
  * UtilDatePropertyEditor
- * 
+ *
  * @author Administrator
  *
  */
@@ -51,7 +52,7 @@ public class UploadFilesUtils {
 
 	/**
 	 * 保存单个文件
-	 * 
+	 *
 	 * @param request
 	 * @param file
 	 */
@@ -96,7 +97,7 @@ public class UploadFilesUtils {
 
 	/**
 	 * 批量保存文件_加前缀
-	 * 
+	 *
 	 * @param request
 	 * @param file
 	 */
@@ -125,7 +126,7 @@ public class UploadFilesUtils {
 
 	/**
 	 * 保存单个文件_加前缀
-	 * 
+	 *
 	 * @param request
 	 * @param file
 	 */
@@ -169,7 +170,7 @@ public class UploadFilesUtils {
 
 	/**
 	 * 保存单个文件_加前缀
-	 * 
+	 *
 	 * @param request
 	 * @param file
 	 */

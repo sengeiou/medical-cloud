@@ -1,7 +1,7 @@
 package com.zhou.medical.operation.service;
 
 
-import com.zhou.medical.common.entity.manager.SystemUser;
+import com.zhou.medical.common.entity.operation.SystemUser;
 import com.zhou.medical.dao.service.GenericService;
 
 /**

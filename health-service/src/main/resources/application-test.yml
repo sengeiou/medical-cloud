@@ -1,0 +1,50 @@
+server:
+  #端口号
+  port: 8003
+  #项目名，如果不设定，默认是 /
+#  context-path: /log-service
+
+spring:
+  application:
+    name: health-service
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    master:
+      type: com.alibaba.druid.pool.DruidDataSource
+      driver-class-name: com.mysql.jdbc.Driver
+      initialize: true #指定初始化数据源，是否用data.sql来初始化，默认: true
+      name: master
+      url: jdbc:mysql://192.168.3.100:3306/medicalcare?useUnicode=true&characterEncoding=utf-8&useSSL=false&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Asia/Shanghai&zeroDateTimeBehavior=convertToNull
+      username: root
+      password: root
+    slave:
+      type: com.alibaba.druid.pool.DruidDataSource
+      driver-class-name: com.mysql.jdbc.Driver
+      initialize: true
+      name: slave
+      url: jdbc:mysql://192.168.3.100:3306/medicalcare?useUnicode=true&characterEncoding=utf-8&useSSL=false&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Asia/Shanghai&zeroDateTimeBehavior=convertToNull
+      username: root
+      password: root
+#  boot:
+#      admin:
+#        client:
+#          service-base-url: http://192.168.3.100:9002
+#        url:  http://192.168.3.100:9002
+  zipkin:
+    base-url: http://192.168.3.100:9001
+
+eureka:
+    instance:
+      lease-renewal-interval-in-seconds: 30
+    client:
+      registry-fetch-interval-seconds: 15
+      service-url:
+        defaultZone:  http://192.168.3.100:9003/eureka/
+
+management:
+  security:
+    enabled:  false
+
+logging:
+  level:
+    com.zhou.medical: debug

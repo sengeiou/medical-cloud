@@ -1,6 +1,6 @@
 package com.zhou.medical.operation.service.Impl;
 
-import com.zhou.medical.common.entity.manager.PackageVersionPatient;
+import com.zhou.medical.common.entity.operation.PackageVersionPatient;
 import com.zhou.medical.dao.service.Impl.GenericServiceImpl;
 import com.zhou.medical.operation.service.IPackageVersionPatientService;
 import org.springframework.stereotype.Service;

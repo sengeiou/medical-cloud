@@ -1,17 +1,12 @@
 package com.zhou.medical.operation.controller;
 
 import com.zhou.medical.common.entity.Pager;
-import com.zhou.medical.common.entity.Tree;
-import com.zhou.medical.common.entity.manager.SystemResource;
-import com.zhou.medical.common.entity.manager.SystemRole;
-import com.zhou.medical.operation.service.ISystemResourceService;
+import com.zhou.medical.common.entity.operation.SystemRole;
 import com.zhou.medical.operation.service.ISystemRoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.List;
-import java.util.Map;
 
 /**
  * 系统角色

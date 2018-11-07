@@ -1,6 +1,6 @@
 package com.zhou.medical.operation.test;
 
-import com.zhou.medical.common.entity.manager.PackageVersionPatient;
+import com.zhou.medical.common.entity.operation.PackageVersionPatient;
 import com.zhou.medical.operation.OperationServiceApplication;
 import com.zhou.medical.operation.service.IPackageVersionPatientService;
 import org.junit.Test;
