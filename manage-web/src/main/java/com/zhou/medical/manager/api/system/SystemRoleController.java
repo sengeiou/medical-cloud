@@ -4,6 +4,7 @@ import com.zhou.medical.common.entity.MessageCode;
 import com.zhou.medical.common.entity.Pager;
 import com.zhou.medical.common.entity.Results;
 import com.zhou.medical.common.entity.operation.SystemRole;
+import com.zhou.medical.log.annotation.SystemControllerLog;
 import com.zhou.medical.manager.client.operation.SystemRoleFeignClient;
 import com.zhou.medical.manager.client.operation.SystemRoleResourceFeignClient;
 import org.apache.log4j.Logger;
@@ -45,6 +46,7 @@ public class SystemRoleController {
      * @return
      */
     @RequestMapping(value = "/manager", method = RequestMethod.GET)
+    @SystemControllerLog("/sys/systemRole-manager")
     public String manager() {
         return "/sys/admin/role";
     }
@@ -59,7 +61,8 @@ public class SystemRoleController {
      */
     @RequestMapping(value = "/findRolePage", method = RequestMethod.POST)
     @ResponseBody
-	public Map<String, Object> findUserPage(HttpServletRequest request, SystemRole systemRole,
+    @SystemControllerLog("/sys/systemRole-findRolePage")
+    public Map<String, Object> findUserPage(HttpServletRequest request, SystemRole systemRole,
                                             @RequestParam(value = "page", defaultValue = "1") int page,
                                             @RequestParam(value = "rows", defaultValue = "10") int rows) {
 		Map<String, Object> map = new HashMap<String, Object>();
@@ -81,6 +84,7 @@ public class SystemRoleController {
      * @return
      */
     @RequestMapping(value = "/addPage", method = RequestMethod.GET)
+    @SystemControllerLog("/sys/systemRole-addPage")
     public String addPage() {
         return "/sys/admin/roleAdd";
     }
@@ -93,6 +97,7 @@ public class SystemRoleController {
      */
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     @ResponseBody
+    @SystemControllerLog("/sys/systemRole-add")
     public Results<Map<String, Object>> add(SystemRole role) {
     	Results<Map<String, Object>> results = new Results<Map<String, Object>>();
 
@@ -116,6 +121,7 @@ public class SystemRoleController {
      */
     @RequestMapping("/delete")
     @ResponseBody
+    @SystemControllerLog("/sys/systemRole-delete")
     public Results<Map<String, Object>> delete(int id) {
     	Results<Map<String, Object>> results = new Results<Map<String, Object>>();
         try {
@@ -142,6 +148,7 @@ public class SystemRoleController {
      * @return
      */
     @RequestMapping(value = "/editPage", method = RequestMethod.GET)
+    @SystemControllerLog("/sys/systemRole-editPage")
     public String editPage(Model model, int id) {
         SystemRole systemRole = systemRoleFeignClient.findById("selectByPrimaryKey", id);
 		model.addAttribute("systemRole", systemRole);
@@ -156,6 +163,7 @@ public class SystemRoleController {
      */
     @RequestMapping("/edit")
     @ResponseBody
+    @SystemControllerLog("/sys/systemRole-edit")
     public Results<Map<String, Object>> edit(SystemRole role) {
     	Results<Map<String, Object>> results = new Results<Map<String, Object>>();
 
@@ -181,6 +189,7 @@ public class SystemRoleController {
      * @return
      */
     @RequestMapping("/grantPage")
+    @SystemControllerLog("/sys/systemRole-grantPage")
     public String grantPage(HttpServletRequest request, int id, Model model) {
         model.addAttribute("id", id);
         return "/sys/admin/roleGrant";
@@ -195,6 +204,7 @@ public class SystemRoleController {
      */
     @RequestMapping("/grant")
     @ResponseBody
+    @SystemControllerLog("/sys/systemRole-grant")
     public Results<Map<String, Object>> grant(int id, String resourceIds) {
     	Results<Map<String, Object>> results = new Results<Map<String, Object>>();
 
@@ -221,6 +231,7 @@ public class SystemRoleController {
      */
     @RequestMapping("/findResourceIdListByRoleId")
     @ResponseBody
+    @SystemControllerLog("/sys/systemRole-findResourceIdListByRoleId")
     public Results<Object> findResourceIdListByRoleId(Integer id) {
     	Results<Object> results = new Results<Object>();
         try {

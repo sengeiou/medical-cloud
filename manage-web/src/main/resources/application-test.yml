@@ -21,6 +21,14 @@ spring:
     multipart:
       maxFileSize: 50Mb
       maxRequestSize: 50Mb
+  rabbitmq:
+      host: 192.168.3.132
+      port: 5672
+      username: guest
+      password: guest
+      publisher-confirms: true
+      publisher-returns: true
+      virtual-host: /
 
 eureka:
     instance:
@@ -28,7 +36,7 @@ eureka:
     client:
       registry-fetch-interval-seconds: 15
       service-url:
-        defaultZone:  http://192.168.3.100:9003/eureka/
+        defaultZone:  http://192.168.3.132:9003/eureka/
 
 management:
   security:

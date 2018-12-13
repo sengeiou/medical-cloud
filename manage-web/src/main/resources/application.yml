@@ -1,6 +1,6 @@
 spring:
   profiles:
-    active: dev
+    active: test
 
 #启动命令
-#java -jar -Dspring.profiles.active=prod hsp-log-service.jar >service.log 2>&1 &
+#java -jar -Dspring.profiles.active=test manage-web-0.0.1-SNAPSHOT.jar >manage-web.log 2>&1 &

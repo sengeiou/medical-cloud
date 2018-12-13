@@ -1,12 +1,12 @@
 package com.zhou.medical.manager.api.system;
 
-import com.zhou.medical.common.annotation.SystemControllerLog;
 import com.zhou.medical.common.controller.BaseController;
 import com.zhou.medical.common.entity.MessageCode;
 import com.zhou.medical.common.entity.Pager;
 import com.zhou.medical.common.entity.Results;
 import com.zhou.medical.common.entity.health.ScienceArticle;
 import com.zhou.medical.common.entity.health.ScienceColumn;
+import com.zhou.medical.log.annotation.SystemControllerLog;
 import com.zhou.medical.manager.client.health.ScienceArticleFeignClient;
 import com.zhou.medical.manager.client.health.ScienceColumnFeignClient;
 import org.apache.commons.lang.StringUtils;
@@ -46,7 +46,7 @@ public class SystemScienceColumnController extends BaseController {
 	 *
 	 * @return
 	 */
-	@SystemControllerLog(description = "管理页面")
+	@SystemControllerLog("管理页面")
 	@RequestMapping(value = "/manager", method = RequestMethod.GET)
 	public String manager() {
 		return "/sys/science/scienceColumn";
@@ -59,7 +59,7 @@ public class SystemScienceColumnController extends BaseController {
 	 */
 	@RequestMapping(value = "/findUserPage")
 	@ResponseBody
-	@SystemControllerLog(description = "查找健康科普标题栏信息")
+	@SystemControllerLog("查找健康科普标题栏信息")
 	public Map<String, Object> findUserPage(HttpServletResponse response, Integer onOff, String keyword,
                                             @RequestParam(value = "page", defaultValue = "1") Long page,
                                             @RequestParam(value = "rows", defaultValue = "10") Long rows) {
@@ -98,7 +98,7 @@ public class SystemScienceColumnController extends BaseController {
 	 */
 	@RequestMapping("/show")
 	@ResponseBody
-	@SystemControllerLog(description = "健康科普启用显示标题")
+	@SystemControllerLog("健康科普启用显示标题")
 	public Results<Map<String, Object>> show(int id) {
 		Results<Map<String, Object>> result = new Results<Map<String, Object>>();
 		try {
@@ -136,7 +136,7 @@ public class SystemScienceColumnController extends BaseController {
 	 */
 	@RequestMapping("/hide")
 	@ResponseBody
-	@SystemControllerLog(description = "健康科普启用隐藏标题")
+	@SystemControllerLog("健康科普启用隐藏标题")
 	public Results<Map<String, Object>> hide(int id) {
 		Results<Map<String, Object>> result = new Results<Map<String, Object>>();
 		try {
@@ -199,7 +199,7 @@ public class SystemScienceColumnController extends BaseController {
 
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	@ResponseBody
-	@SystemControllerLog(description = "新增标题栏")
+	@SystemControllerLog("新增标题栏")
 	public Results<Map<String, Object>> add(HttpServletRequest request, ScienceColumn scienceColumn_) {
 		Results<Map<String, Object>> results = new Results<Map<String, Object>>();
 
@@ -235,7 +235,7 @@ public class SystemScienceColumnController extends BaseController {
 
 	@RequestMapping(value = "/delete", method = RequestMethod.POST)
 	@ResponseBody
-	@SystemControllerLog(description = "删除标题栏")
+	@SystemControllerLog("删除标题栏")
 	public Results<Map<String, Object>> delete(HttpServletRequest request, int id) {
 		Results<Map<String, Object>> results = new Results<Map<String, Object>>();
 
@@ -272,7 +272,7 @@ public class SystemScienceColumnController extends BaseController {
 	
 	@RequestMapping("/reject")
 	@ResponseBody
-	@SystemControllerLog(description = "拒绝审核科普标题栏")	
+	@SystemControllerLog("拒绝审核科普标题栏")	
 	public Results<Map<String, Object>> reject(int id) {
 		Results<Map<String, Object>> result = new Results<Map<String, Object>>();
 		try {
@@ -294,7 +294,7 @@ public class SystemScienceColumnController extends BaseController {
 	
 	@RequestMapping("/pass")
 	@ResponseBody
-	@SystemControllerLog(description = "通过审核科普标题栏")
+	@SystemControllerLog("通过审核科普标题栏")
 	public Results<Map<String, Object>> pass(int id, Model model) {
 		Results<Map<String, Object>> result = new Results<Map<String, Object>>();
 		try {

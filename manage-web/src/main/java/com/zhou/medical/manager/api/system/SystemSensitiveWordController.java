@@ -1,11 +1,11 @@
 package com.zhou.medical.manager.api.system;
 
-import com.zhou.medical.common.annotation.SystemControllerLog;
 import com.zhou.medical.common.controller.BaseController;
 import com.zhou.medical.common.entity.MessageCode;
 import com.zhou.medical.common.entity.Pager;
 import com.zhou.medical.common.entity.Results;
 import com.zhou.medical.common.entity.operation.SensitiveWord;
+import com.zhou.medical.log.annotation.SystemControllerLog;
 import com.zhou.medical.manager.client.operation.SensitiveWordFeignClient;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Controller;
@@ -36,7 +36,7 @@ public class SystemSensitiveWordController extends BaseController {
 	 * 
 	 * @return
 	 */
-	@SystemControllerLog(description = "跳转敏感词管理页面")
+	@SystemControllerLog("跳转敏感词管理页面")
     @RequestMapping(value = "/manager", method = RequestMethod.GET)
     public String manager() {
     	 return "/sys/sensitiveWord/sensitiveWord";
@@ -49,7 +49,7 @@ public class SystemSensitiveWordController extends BaseController {
 	 */
 	@RequestMapping(value = "findPage", method = RequestMethod.POST)
 	@ResponseBody
-	@SystemControllerLog(description = "获取敏感词list")
+	@SystemControllerLog("获取敏感词list")
 	public Map<String, Object> findPage(HttpServletRequest request, String keyword,
                                         @RequestParam(value = "page", defaultValue = "1") Long page,
                                         @RequestParam(value = "rows", defaultValue = "10") Long rows) {
@@ -78,7 +78,7 @@ public class SystemSensitiveWordController extends BaseController {
      *
      * @return
      */
-	@SystemControllerLog(description = "跳转敏感词新增页面")
+	@SystemControllerLog("跳转敏感词新增页面")
     @RequestMapping(value = "/addPage", method = RequestMethod.GET)
     public String addPage() {
         return "/sys/sensitiveWord/sensitiveWordAdd";
@@ -92,7 +92,7 @@ public class SystemSensitiveWordController extends BaseController {
 	 */
 	@RequestMapping(value = "add", method = RequestMethod.POST)
 	@ResponseBody
-	@SystemControllerLog(description = "新增敏感词")
+	@SystemControllerLog("新增敏感词")
 	public Results<String> add(HttpServletRequest request, SensitiveWord sensitiveWord){
 		Results<String> results = new Results<String>();
 		try {
@@ -118,7 +118,7 @@ public class SystemSensitiveWordController extends BaseController {
 	 * @return
 	 */
 	@RequestMapping("/editPage")
-	@SystemControllerLog(description = "跳转修改敏感词页面")
+	@SystemControllerLog("跳转修改敏感词页面")
 	public String editPage(int id, Model model) {
 		try {
 			SensitiveWord sensitiveWord = sensitiveWordFeignClient.findById("selectByPrimaryKey", id);
@@ -136,7 +136,7 @@ public class SystemSensitiveWordController extends BaseController {
 	 */
 	@RequestMapping(value = "edit", method = RequestMethod.POST)
 	@ResponseBody
-	@SystemControllerLog(description = "修改敏感词")
+	@SystemControllerLog("修改敏感词")
 	public Results<String> edit(HttpServletRequest request, SensitiveWord sensitiveWord) {
 		Results<String> results = new Results<String>();
 		
@@ -161,7 +161,7 @@ public class SystemSensitiveWordController extends BaseController {
 	 */
 	@RequestMapping(value = "delete", method = RequestMethod.POST)
 	@ResponseBody
-	@SystemControllerLog(description = "删除敏感词")
+	@SystemControllerLog("删除敏感词")
 	public Results<String> delete(Integer id){
 		Results<String> results = new Results<String>();
 		try {

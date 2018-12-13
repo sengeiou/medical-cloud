@@ -25,22 +25,9 @@ String date= format.format(new Date());
 	            pageSize: 20,
 	            pageList: [10, 20, 30, 40, 50, 100, 200, 300, 400, 500],
 	            columns: [[{
-	                width: '80',
-	                title: '用户名',
-	                field: 'userName',
-	                sortable: true
-	            }, {
-	                width: '100',
-	                title: '电话号码',
-	                field: 'userPhone'
-	            }, {
-	                width: '80',
-	                title: '用户类型',
-	                field: 'userType'
-	            }, {
 	                width: '150',
 	                title: '请求名称',
-	                field: 'acctionName',
+	                field: 'actionName',
 	                sortable: true
 	            }, {
 	                width: '150',
@@ -55,11 +42,11 @@ String date= format.format(new Date());
 	                title: '地址',
 	                field: 'url'
 	            }, {
-	                width: '100',
+	                width: '150',
 	                title: '请求输入',
 	                field: 'request'
 	            }, {
-	                width: '100',
+	                width: '250',
 	                title: '请求输出',
 	                field: 'response'
 	            }, {
@@ -74,14 +61,6 @@ String date= format.format(new Date());
 	                width: '60',
 	                title: '版本',
 	                field: 'version'
-	            }, {
-	                width: '60',
-	                title: '系统',
-	                field: 'system'
-	            }, {
-	                width: '60',
-	                title: '机型',
-	                field: 'model'
 	            }, {
 	                width: '30',
 	                title: '状态',
@@ -108,7 +87,7 @@ String date= format.format(new Date());
 	            }]]
 	        });
 	    });
-	    
+
 	    function searchFun() {
 	        dataGrid.datagrid('load', $.serializeObject($('#searchForm')));
 	    }
@@ -116,24 +95,24 @@ String date= format.format(new Date());
 	        $('#searchForm input').val('');
 	        dataGrid.datagrid('load', {});
 	    }
-	    
-	    /*格式化日期*/  
-	    function formatDate(fmt,date) { 
-		  var o = {   
-		    "M+" : date.getMonth()+1,                 //月份   
-		    "d+" : date.getDate(),                    //日   
-		    "h+" : date.getHours(),                   //小时   
-		    "m+" : date.getMinutes(),                 //分   
-		    "s+" : date.getSeconds(),                 //秒   
-		    "q+" : Math.floor((date.getMonth()+3)/3), //季度   
-		    "S"  : date.getMilliseconds()             //毫秒   
-		  };   
-		  if(/(y+)/.test(fmt))   
-		    fmt=fmt.replace(RegExp.$1, (date.getFullYear()+"").substr(4 - RegExp.$1.length));   
-		  for(var k in o)   
-		    if(new RegExp("("+ k +")").test(fmt))   
-		  fmt = fmt.replace(RegExp.$1, (RegExp.$1.length==1) ? (o[k]) : (("00"+ o[k]).substr((""+ o[k]).length)));   
-		  return fmt;   
+
+	    /*格式化日期*/
+	    function formatDate(fmt,date) {
+		  var o = {
+		    "M+" : date.getMonth()+1,                 //月份
+		    "d+" : date.getDate(),                    //日
+		    "h+" : date.getHours(),                   //小时
+		    "m+" : date.getMinutes(),                 //分
+		    "s+" : date.getSeconds(),                 //秒
+		    "q+" : Math.floor((date.getMonth()+3)/3), //季度
+		    "S"  : date.getMilliseconds()             //毫秒
+		  };
+		  if(/(y+)/.test(fmt))
+		    fmt=fmt.replace(RegExp.$1, (date.getFullYear()+"").substr(4 - RegExp.$1.length));
+		  for(var k in o)
+		    if(new RegExp("("+ k +")").test(fmt))
+		  fmt = fmt.replace(RegExp.$1, (RegExp.$1.length==1) ? (o[k]) : (("00"+ o[k]).substr((""+ o[k]).length)));
+		  return fmt;
 		}
 	</script>
 </head>

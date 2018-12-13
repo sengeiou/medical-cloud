@@ -1,7 +1,7 @@
 package com.zhou.medical.manager.api.system;
 
-import com.zhou.medical.common.annotation.SystemControllerLog;
 import com.zhou.medical.common.controller.BaseController;
+import com.zhou.medical.log.annotation.SystemControllerLog;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,7 +29,7 @@ public class SystemSensitiveRecordLogController extends BaseController {
 	 * 
 	 * @return
 	 */
-	@SystemControllerLog(description = "跳转敏感词管理页面")
+	@SystemControllerLog("跳转敏感词管理页面")
     @RequestMapping(value = "/manager", method = RequestMethod.GET)
     public String manager() {
     	 return "/sys/sensitiveWord/sensitiveRecordLog";
@@ -42,7 +42,7 @@ public class SystemSensitiveRecordLogController extends BaseController {
 	 */
 	@RequestMapping(value = "findPage", method = RequestMethod.POST)
 	@ResponseBody
-	@SystemControllerLog(description = "获取敏感词记录日志list")
+	@SystemControllerLog("获取敏感词记录日志list")
 	public Map<String, Object> findPage(HttpServletRequest request, String keyword,
                                         @RequestParam(value = "page", defaultValue = "1") Long page,
                                         @RequestParam(value = "rows", defaultValue = "10") Long rows) {

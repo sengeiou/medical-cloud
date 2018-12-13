@@ -108,7 +108,7 @@ public class RedisConfig {
         //如果Redis设置有密码
         JedisConnectionFactory.setPassword(password);
         //客户端超时时间单位是毫秒
-        JedisConnectionFactory.setTimeout(5000);
+        JedisConnectionFactory.setTimeout(10000);
         return JedisConnectionFactory;
     }
 

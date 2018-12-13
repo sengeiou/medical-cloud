@@ -1,7 +1,6 @@
 package com.zhou.medical.manager.api.doctor;
 
 import com.alibaba.fastjson.JSONObject;
-import com.zhou.medical.common.annotation.SystemControllerLog;
 import com.zhou.medical.common.config.Constant;
 import com.zhou.medical.common.controller.BaseController;
 import com.zhou.medical.common.entity.ExcelDoctorUserEntity3;
@@ -15,6 +14,7 @@ import com.zhou.medical.common.exception.CoderException;
 import com.zhou.medical.common.util.DES;
 import com.zhou.medical.common.util.FileFilterUtils;
 import com.zhou.medical.common.util.UploadFilesUtils;
+import com.zhou.medical.log.annotation.SystemControllerLog;
 import com.zhou.medical.manager.client.account.DoctorsTeamFeignClient;
 import com.zhou.medical.manager.client.account.DoctorsTeamUserLinkFeignClient;
 import com.zhou.medical.manager.client.account.DoctorsUserFeignClient;
@@ -82,7 +82,7 @@ public class SystemDoctorsRecordController extends BaseController {
 	 * @return
 	 */
 	@RequestMapping(value = "/manager", method = RequestMethod.GET)
-	@SystemControllerLog(description = "跳转到医生档案管理页面")
+	@SystemControllerLog("跳转到医生档案管理页面")
 	public String manager() {
 		return "/doctor/doctorRecord";
 	}
@@ -94,7 +94,7 @@ public class SystemDoctorsRecordController extends BaseController {
 	 */
 	@RequestMapping(value = "/findUserPage")
 	@ResponseBody
-	@SystemControllerLog(description = "查找医生档案")
+	@SystemControllerLog("查找医生档案")
 	public Map<String, Object> findUserPage(HttpServletResponse response, DoctorsUser doctorsUser, String hospitalId2,
 											@RequestParam(value = "page", defaultValue = "1") Long page,
 											@RequestParam(value = "rows", defaultValue = "10") Long rows) {
@@ -135,7 +135,7 @@ public class SystemDoctorsRecordController extends BaseController {
 	 * @return
 	 */
 	@RequestMapping("/queryPage")
-	@SystemControllerLog(description = "跳转到医生档案详情页面")
+	@SystemControllerLog("跳转到医生档案详情页面")
 	public String queryPage(int id, Model model) {
 		try {
 			DoctorsUser doctorUser = doctorsUserFeignClient.findById("selectByPrimaryKey", id);
@@ -156,7 +156,7 @@ public class SystemDoctorsRecordController extends BaseController {
 
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	@ResponseBody
-	@SystemControllerLog(description = "新增医生")
+	@SystemControllerLog("新增医生")
 	public Results<Map<String, Object>> add(HttpServletRequest request, DoctorsUser doctorsUser_, MultipartFile file,
 											MultipartFile certificate) {
 		Results<Map<String, Object>> results = new Results<Map<String, Object>>();
@@ -351,7 +351,7 @@ public class SystemDoctorsRecordController extends BaseController {
 	
 	
 	@RequestMapping(value = "/batchImportPage", method = RequestMethod.GET)
-	@SystemControllerLog(description = "跳转到批量导入医生页面")
+	@SystemControllerLog("跳转到批量导入医生页面")
 	public String batchImportPage() {
 		return "/doctor/doctorRecordBatchImport";
 	}
@@ -359,7 +359,7 @@ public class SystemDoctorsRecordController extends BaseController {
 	
 	
 	@RequestMapping(value = "/batchImport")
-	@SystemControllerLog(description = "批量导入医生")
+	@SystemControllerLog("批量导入医生")
 	@ResponseBody
 	public Results<Map<String, Object>> batchImport(HttpServletRequest request, MultipartFile file) {
 		Results<Map<String, Object>> results = new Results<Map<String, Object>>();

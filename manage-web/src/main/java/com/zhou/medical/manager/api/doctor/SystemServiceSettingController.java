@@ -1,11 +1,11 @@
 package com.zhou.medical.manager.api.doctor;
 
-import com.zhou.medical.common.annotation.SystemControllerLog;
 import com.zhou.medical.common.controller.BaseController;
 import com.zhou.medical.common.entity.MessageCode;
 import com.zhou.medical.common.entity.Pager;
 import com.zhou.medical.common.entity.Results;
 import com.zhou.medical.common.entity.account.DoctorsUser;
+import com.zhou.medical.log.annotation.SystemControllerLog;
 import com.zhou.medical.manager.client.account.DoctorsUserFeignClient;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang.StringUtils;
@@ -52,7 +52,7 @@ public class SystemServiceSettingController extends BaseController {
 	 * @return
 	 */
 	@RequestMapping(value = "/manager", method = RequestMethod.GET)
-	@SystemControllerLog(description = "跳转到医生档案管理页面")
+	@SystemControllerLog("跳转到医生档案管理页面")
 	public String manager() {
 		return "/doctor/doctorServiceSetting";
 	}
@@ -64,7 +64,7 @@ public class SystemServiceSettingController extends BaseController {
 	 */
 	@RequestMapping(value = "/findUserPage")
 	@ResponseBody
-	@SystemControllerLog(description = "查找医生服务设置")
+	@SystemControllerLog("查找医生服务设置")
 	public Map<String, Object> findUserPage(HttpServletResponse response, DoctorsUser doctorsUser, String hospitalId2,
 											@RequestParam(value = "page", defaultValue = "1") Long page,
 											@RequestParam(value = "rows", defaultValue = "10") Long rows) {

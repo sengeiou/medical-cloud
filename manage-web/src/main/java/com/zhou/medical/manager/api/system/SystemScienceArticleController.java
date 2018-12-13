@@ -1,6 +1,5 @@
 package com.zhou.medical.manager.api.system;
 
-import com.zhou.medical.common.annotation.SystemControllerLog;
 import com.zhou.medical.common.controller.BaseController;
 import com.zhou.medical.common.entity.MessageCode;
 import com.zhou.medical.common.entity.Pager;
@@ -9,6 +8,7 @@ import com.zhou.medical.common.entity.health.ScienceArticle;
 import com.zhou.medical.common.entity.health.ScienceColumn;
 import com.zhou.medical.common.util.FileFilterUtils;
 import com.zhou.medical.common.util.UploadFilesUtils;
+import com.zhou.medical.log.annotation.SystemControllerLog;
 import com.zhou.medical.manager.client.health.ScienceArticleFeignClient;
 import com.zhou.medical.manager.client.health.ScienceColumnFeignClient;
 import org.apache.commons.lang.StringUtils;
@@ -49,7 +49,7 @@ public class SystemScienceArticleController extends BaseController {
 	 *
 	 * @return
 	 */
-	@SystemControllerLog(description = "管理页面")
+	@SystemControllerLog("管理页面")
 	@RequestMapping(value = "/manager", method = RequestMethod.GET)
 	public String manager(Model model) {
 		List<ScienceColumn> scienceColumnList = scienceColumnFeignClient.getList("selectAll", new ScienceColumn());
@@ -64,7 +64,7 @@ public class SystemScienceArticleController extends BaseController {
 	 */
 	@RequestMapping(value = "/findUserPage")
 	@ResponseBody
-	@SystemControllerLog(description = "查找健康科普文章信息")
+	@SystemControllerLog("查找健康科普文章信息")
 	public Map<String, Object> findUserPage(HttpServletResponse response, Integer columnId, String keyword,
                                             @RequestParam(value = "page", defaultValue = "1") Long page,
                                             @RequestParam(value = "rows", defaultValue = "10") Long rows) {
@@ -107,7 +107,7 @@ public class SystemScienceArticleController extends BaseController {
 	 * @Title: queryPage @Description: TODO @param @param model @param @param
 	 *         id @param @return 设定文件 @return String 返回类型 @throws
 	 */
-	@SystemControllerLog(description = "详情页面")
+	@SystemControllerLog("详情页面")
 	@RequestMapping(value = "/queryPage", method = RequestMethod.GET)
 	public String queryPage(Model model, int id) {
 		ScienceArticle scienceArticle = scienceArticleFeignClient.findById("selectByPrimaryKey", id);
@@ -125,7 +125,7 @@ public class SystemScienceArticleController extends BaseController {
 	 */
 	@RequestMapping(value = "/delete", method = RequestMethod.POST)
 	@ResponseBody
-	@SystemControllerLog(description = "删除健康科普文章")
+	@SystemControllerLog("删除健康科普文章")
 	public Results<Map<String, Object>> delete(HttpServletRequest request, int id) {
 		Results<Map<String, Object>> results = new Results<Map<String, Object>>();
 
@@ -152,7 +152,7 @@ public class SystemScienceArticleController extends BaseController {
 		}
 	}
 
-	@SystemControllerLog(description = "添加页面")
+	@SystemControllerLog("添加页面")
 	@RequestMapping(value = "/addPage", method = RequestMethod.GET)
 	public String addPage(Model model) {
 		List<ScienceColumn> scienceColumnList = scienceColumnFeignClient.getList("selectAll", new ScienceColumn());
@@ -162,7 +162,7 @@ public class SystemScienceArticleController extends BaseController {
 
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	@ResponseBody
-	@SystemControllerLog(description = "增加文章")
+	@SystemControllerLog("增加文章")
 	public Results<Map<String, Object>> add(HttpServletRequest request, ScienceArticle scienceArticle_,
                                             MultipartFile file) {
 		Results<Map<String, Object>> results = new Results<Map<String, Object>>();
@@ -214,7 +214,7 @@ public class SystemScienceArticleController extends BaseController {
 		}
 	}
 
-	@SystemControllerLog(description = "健康科普编辑页面")
+	@SystemControllerLog("健康科普编辑页面")
 	@RequestMapping(value = "/editPage", method = RequestMethod.GET)
 	public String editPage(Model model, int id) {
 		ScienceArticle scienceArticle = scienceArticleFeignClient.findById("selectByPrimaryKey", id);
@@ -282,7 +282,7 @@ public class SystemScienceArticleController extends BaseController {
 	
 	@RequestMapping("/reject")
 	@ResponseBody
-	@SystemControllerLog(description = "拒绝审核科普文章")	
+	@SystemControllerLog("拒绝审核科普文章")	
 	public Results<Map<String, Object>> reject(int id) {
 		Results<Map<String, Object>> result = new Results<Map<String, Object>>();
 		try {
@@ -304,7 +304,7 @@ public class SystemScienceArticleController extends BaseController {
 	
 	@RequestMapping("/pass")
 	@ResponseBody
-	@SystemControllerLog(description = "通过审核科普文章")
+	@SystemControllerLog("通过审核科普文章")
 	public Results<Map<String, Object>> pass(int id, Model model) {
 		Results<Map<String, Object>> result = new Results<Map<String, Object>>();
 		try {

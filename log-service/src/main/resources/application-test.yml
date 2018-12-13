@@ -1,0 +1,43 @@
+server:
+  #端口号
+  port: 8003
+  #项目名，如果不设定，默认是 /
+#  context-path: /log-service
+
+spring:
+  application:
+    name: log-service
+  boot:
+      admin:
+        client:
+          service-base-url: http://192.168.3.132:9002
+        url:  http://192.168.3.132:9002
+  zipkin:
+    base-url: http://192.168.3.132:9001
+  data:
+    mongodb:
+      uri: mongodb://root:root@192.168.3.132:27017/test
+  rabbitmq:
+    host: 192.168.3.132
+    port: 5672
+    username: guest
+    password: guest
+    publisher-confirms: true
+    publisher-returns: true
+    virtual-host: /
+
+eureka:
+    instance:
+      lease-renewal-interval-in-seconds: 30
+    client:
+      registry-fetch-interval-seconds: 15
+      service-url:
+        defaultZone:  http://192.168.3.132:9003/eureka/
+
+management:
+  security:
+    enabled:  false
+
+logging:
+  level:
+    com.zhou.medical: debug

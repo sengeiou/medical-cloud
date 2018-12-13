@@ -1,12 +1,12 @@
 package com.zhou.medical.manager.api.system;
 
-import com.zhou.medical.common.annotation.SystemControllerLog;
 import com.zhou.medical.common.entity.MessageCode;
 import com.zhou.medical.common.entity.Pager;
 import com.zhou.medical.common.entity.Results;
 import com.zhou.medical.common.entity.health.HealthyProducts;
 import com.zhou.medical.common.util.FileFilterUtils;
 import com.zhou.medical.common.util.UploadFilesUtils;
+import com.zhou.medical.log.annotation.SystemControllerLog;
 import com.zhou.medical.manager.client.health.HealthyProductsFeignClient;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -38,7 +38,7 @@ public class SystemHealthyProductsController {
 	 * 
 	 * @return
 	 */
-	@SystemControllerLog(description = "跳转管理页面")
+	@SystemControllerLog("跳转管理页面")
     @RequestMapping(value = "/manager", method = RequestMethod.GET)
     public String manager() {
     	 return "/sys/healthyProducts/systemHealthyProducts";
@@ -51,7 +51,7 @@ public class SystemHealthyProductsController {
      *
      * @return
      */
-	@SystemControllerLog(description = "跳转新增页面")
+	@SystemControllerLog("跳转新增页面")
     @RequestMapping(value = "/addPage", method = RequestMethod.GET)
     public String addPage() {
         return "/sys/healthyProducts/systemHealthyProductsAdd";
@@ -65,7 +65,7 @@ public class SystemHealthyProductsController {
 	 */
 	@RequestMapping(value = "add", method = RequestMethod.POST)
 	@ResponseBody
-	@SystemControllerLog(description = "新增健康产品")
+	@SystemControllerLog("新增健康产品")
 	public Results<String> add(HttpServletRequest request, HealthyProducts healthyProducts, MultipartFile file){
 		Results<String> results = new Results<String>();
 		try {
@@ -101,7 +101,7 @@ public class SystemHealthyProductsController {
 	 */
 	@RequestMapping(value = "findPage", method = RequestMethod.POST)
 	@ResponseBody
-	@SystemControllerLog(description = "获取健康产品list")
+	@SystemControllerLog("获取健康产品list")
 	public Map<String, Object> findPage(HttpServletRequest request, HealthyProducts healthyProducts,
                                         @RequestParam(value = "page", defaultValue = "1") int page,
                                         @RequestParam(value = "rows", defaultValue = "10") int rows){
@@ -125,7 +125,7 @@ public class SystemHealthyProductsController {
 	 * @return
 	 */
 	@RequestMapping("/editPage")
-	@SystemControllerLog(description = "修改健康产品页面")
+	@SystemControllerLog("修改健康产品页面")
 	public String editPage(int id, Model model) {
 		try {
 			HealthyProducts healthyProducts = healthyProductsFeignClient.findById("selectByPrimaryKey", id);
@@ -143,7 +143,7 @@ public class SystemHealthyProductsController {
 	 */
 	@RequestMapping(value = "edit", method = RequestMethod.POST)
 	@ResponseBody
-	@SystemControllerLog(description = "修改健康产品")
+	@SystemControllerLog("修改健康产品")
 	public Results<String> edit(HttpServletRequest request, HealthyProducts healthyProducts, MultipartFile file){
 		Results<String> results = new Results<String>();
 		try {
@@ -177,7 +177,7 @@ public class SystemHealthyProductsController {
 	 */
 	@RequestMapping(value = "delete", method = RequestMethod.POST)
 	@ResponseBody
-	@SystemControllerLog(description = "删除健康产品")
+	@SystemControllerLog("删除健康产品")
 	public Results<String> delete(Integer id){
 		Results<String> results = new Results<String>();
 		try {
@@ -207,7 +207,7 @@ public class SystemHealthyProductsController {
 	 */
 	@RequestMapping("/reject")
 	@ResponseBody
-	@SystemControllerLog(description = "拒绝审核健康优品")	
+	@SystemControllerLog("拒绝审核健康优品")	
 	public Results<Map<String, Object>> reject(int id) {
 		Results<Map<String, Object>> result = new Results<Map<String, Object>>();
 		try {
@@ -229,7 +229,7 @@ public class SystemHealthyProductsController {
 	
 	@RequestMapping("/pass")
 	@ResponseBody
-	@SystemControllerLog(description = "通过审核健康优品")
+	@SystemControllerLog("通过审核健康优品")
 	public Results<Map<String, Object>> pass(int id, Model model) {
 		Results<Map<String, Object>> result = new Results<Map<String, Object>>();
 		try {

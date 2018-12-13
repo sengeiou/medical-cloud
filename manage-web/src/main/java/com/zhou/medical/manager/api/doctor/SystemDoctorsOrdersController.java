@@ -1,10 +1,10 @@
 package com.zhou.medical.manager.api.doctor;
 
 
-import com.zhou.medical.common.annotation.SystemControllerLog;
 import com.zhou.medical.common.controller.BaseController;
 import com.zhou.medical.common.entity.Pager;
 import com.zhou.medical.common.entity.order.Orders;
+import com.zhou.medical.log.annotation.SystemControllerLog;
 import com.zhou.medical.manager.client.orders.OrdersFeignClient;
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
@@ -41,7 +41,7 @@ public class SystemDoctorsOrdersController extends BaseController {
 	 * @return
 	 */
 	@RequestMapping(value = "/manager", method = RequestMethod.GET)
-	@SystemControllerLog(description = "跳转到医生服务记录页面")
+	@SystemControllerLog("跳转到医生服务记录页面")
 	public String manager() {
 		return "/doctor/doctorsOrders";
 	}
@@ -53,7 +53,7 @@ public class SystemDoctorsOrdersController extends BaseController {
 	 */
 	@RequestMapping(value = "/findOrdersPage")
 	@ResponseBody
-	@SystemControllerLog(description = "查找医生服务记录")
+	@SystemControllerLog("查找医生服务记录")
 	public Map<String, Object> findOrdersPage(HttpServletResponse response, String hospital, String doctorName,
                                               @RequestParam(value = "page", defaultValue = "1") Long page,
                                               @RequestParam(value = "rows", defaultValue = "10") Long rows) {
@@ -88,7 +88,7 @@ public class SystemDoctorsOrdersController extends BaseController {
      *
      */
     @RequestMapping("/queryOrdersDetails")
-    @SystemControllerLog(description = "跳转到医生服务记录详情页面")
+    @SystemControllerLog("跳转到医生服务记录详情页面")
     public String queryOrdersDetails(int id, Model model) {
 
 //    	InquiryMessageLog = patientUserService.findById("getOrdersDetails", id);

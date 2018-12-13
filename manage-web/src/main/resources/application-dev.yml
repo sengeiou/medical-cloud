@@ -21,6 +21,14 @@ spring:
     multipart:
       maxFileSize: 50Mb
       maxRequestSize: 50Mb
+  rabbitmq:
+      host: 127.0.0.1
+      port: 5672
+      username: guest
+      password: guest
+      publisher-confirms: true
+      publisher-returns: true
+      virtual-host: /
 
 eureka:
     instance:

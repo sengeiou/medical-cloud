@@ -1,7 +1,6 @@
 package com.zhou.medical.manager.api.doctor;
 
 import com.alibaba.fastjson.JSONObject;
-import com.zhou.medical.common.annotation.SystemControllerLog;
 import com.zhou.medical.common.config.Constant;
 import com.zhou.medical.common.controller.BaseController;
 import com.zhou.medical.common.entity.MessageCode;
@@ -12,6 +11,7 @@ import com.zhou.medical.common.exception.CoderException;
 import com.zhou.medical.common.util.DES;
 import com.zhou.medical.common.util.MD5;
 import com.zhou.medical.common.util.ShuyuanUtils;
+import com.zhou.medical.log.annotation.SystemControllerLog;
 import com.zhou.medical.manager.client.account.*;
 import easemob.server.api.impl.EasemobIMUsers;
 import io.swagger.client.model.Nickname;
@@ -72,7 +72,7 @@ public class SystemDoctorsRegisterController extends BaseController {
 	 * @return
 	 */
 	@RequestMapping(value = "/manager", method = RequestMethod.GET)
-	@SystemControllerLog(description = "跳转到医生注册审核管理页面")
+	@SystemControllerLog( "跳转到医生注册审核管理页面")
 	public String manager() {
 		return "/doctor/doctorRegister";
 	}
@@ -84,7 +84,7 @@ public class SystemDoctorsRegisterController extends BaseController {
 	 */
 	@RequestMapping(value = "/findUserPage")
 	@ResponseBody
-	@SystemControllerLog(description = "查找医生注册审核信息")	
+	@SystemControllerLog( "查找医生注册审核信息")	
 	public Map<String, Object> findUserPage(HttpServletResponse response, Integer status, String keyword, String hospitalId2,
                                             @RequestParam(value = "page", defaultValue = "1") Long page,
                                             @RequestParam(value = "rows", defaultValue = "10") Long rows) {
@@ -140,7 +140,7 @@ public class SystemDoctorsRegisterController extends BaseController {
 	 * @return
 	 */
 	@RequestMapping("/queryPage")
-	@SystemControllerLog(description = "跳转到医生注册审核详情页面")	
+	@SystemControllerLog( "跳转到医生注册审核详情页面")	
 	public String queryPage(int id, Model model) {
 		String[] certificateUrls=null;
 		try {
@@ -168,7 +168,7 @@ public class SystemDoctorsRegisterController extends BaseController {
 	 * @return
 	 */
 	@RequestMapping("/editPage")
-	@SystemControllerLog(description = "跳转到医生注册审核管理编辑页面")	
+	@SystemControllerLog( "跳转到医生注册审核管理编辑页面")	
 	public String editPage(int id, Model model) {
 		try {
 			DoctorsUser doctorUser = doctorsUserFeignClient.findById("selectByPrimaryKey", id);
@@ -188,7 +188,7 @@ public class SystemDoctorsRegisterController extends BaseController {
 	 */
 	@RequestMapping("/edit")
 	@ResponseBody
-	@SystemControllerLog(description = "医生注册审核管理编辑")	
+	@SystemControllerLog( "医生注册审核管理编辑")	
 	public Results<Map<String, Object>> edit(DoctorsUser doctorsUser_, HttpServletRequest request) {
 		Results<Map<String, Object>> result = new Results<Map<String, Object>>();
 		try {
@@ -240,7 +240,7 @@ public class SystemDoctorsRegisterController extends BaseController {
 	 */
 	@RequestMapping("/reject")
 	@ResponseBody
-	@SystemControllerLog(description = "医生注册审核管理拒绝通过")	
+	@SystemControllerLog( "医生注册审核管理拒绝通过")
 	public Results<Map<String, Object>> reject(int id) {
 		Results<Map<String, Object>> result = new Results<Map<String, Object>>();
 		try {
@@ -267,7 +267,7 @@ public class SystemDoctorsRegisterController extends BaseController {
 	 */
 	@RequestMapping("/pass")
 	@ResponseBody
-	@SystemControllerLog(description = "医生注册审核管理通过审核")
+	@SystemControllerLog( "医生注册审核管理通过审核")
 	public Results<Map<String, Object>> pass(int id, Model model) {
 		Results<Map<String, Object>> result = new Results<Map<String, Object>>();
 		try {
@@ -392,7 +392,7 @@ public class SystemDoctorsRegisterController extends BaseController {
 	 */
 	@RequestMapping("/rePass")
 	@ResponseBody
-	@SystemControllerLog(description = "医生注册审核管理重新通过审核")
+	@SystemControllerLog( "医生注册审核管理重新通过审核")
 	public Results<Map<String, Object>> rePass(int id, Model model) {
 		Results<Map<String, Object>> result = new Results<Map<String, Object>>();
 		try {

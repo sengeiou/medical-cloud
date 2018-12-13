@@ -287,7 +287,7 @@ public class SystemUserController {
 	}
 
 	/**
-	 * 用户管理页
+	 * 角色授权理页
 	 *
 	 * @return
 	 */
@@ -309,7 +309,7 @@ public class SystemUserController {
 	}
 
 	/**
-	 * 用户管理页
+	 * 禁止用户
 	 *
 	 * @return
 	 */
@@ -331,7 +331,7 @@ public class SystemUserController {
 	}
 
 	/**
-	 * 用户管理页
+	 * 重置密码
 	 *
 	 * @return
 	 */
@@ -355,7 +355,7 @@ public class SystemUserController {
 	}
 
 	/**
-	 * 用户管理页
+	 * 用户查询
 	 *
 	 * @return
 	 */

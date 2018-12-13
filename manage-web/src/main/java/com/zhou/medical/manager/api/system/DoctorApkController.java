@@ -6,7 +6,11 @@ import com.zhou.medical.common.entity.Results;
 import com.zhou.medical.common.entity.operation.PackageVersionDoctor;
 import com.zhou.medical.common.util.FileFilterUtils;
 import com.zhou.medical.common.util.UploadFilesUtils;
+import com.zhou.medical.log.annotation.SystemControllerLog;
+import com.zhou.medical.manager.TestAnn;
 import com.zhou.medical.manager.client.operation.DoctorApkFeignClient;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import net.dongliu.apk.parser.ApkFile;
 import net.dongliu.apk.parser.bean.ApkMeta;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +34,7 @@ import java.util.Map;
  */
 @Controller
 @RequestMapping("/sys/pav/doctorApk")
+@Api(tags="包版本")
 public class DoctorApkController {
 
     private static final String PACKAGE_NAME = "com.cmcc.doctor";
@@ -44,6 +49,7 @@ public class DoctorApkController {
      * @param request
      * @return
      */
+    @ApiOperation(value = "addPackage", notes = "addPackage")
     @RequestMapping(value = "add", method = RequestMethod.POST)
     @ResponseBody
     public Results<PackageVersionDoctor> addPackage(HttpServletRequest request, String parame, MultipartFile file) {
@@ -146,12 +152,14 @@ public class DoctorApkController {
      * @param rows
      * @return
      */
+    @ApiOperation(value = "findPage", notes = "findPage")
     @RequestMapping(value = "findPage", method = RequestMethod.POST)
     @ResponseBody
+//    @TestAnn("获取apklist")
+    @SystemControllerLog("获取apklist")
     public Map<String, Object> findPage(PackageVersionDoctor packageVersionDoctor,
                                         @RequestParam(value = "page", defaultValue = "1") int page,
                                         @RequestParam(value = "rows", defaultValue = "10") int rows) {
-
         Map<String, Object> map = new HashMap<String, Object>();
         try {
             Pager<PackageVersionDoctor> pagers = doctorApkFeignClient.getList("getList", page, rows, packageVersionDoctor);
@@ -170,6 +178,7 @@ public class DoctorApkController {
      */
     @RequestMapping(value = "getLP")
     @ResponseBody
+    @SystemControllerLog("getLP")
     public Results<PackageVersionDoctor> getLatestPackage() {
         Results<PackageVersionDoctor> results = new Results<PackageVersionDoctor>();
         try {

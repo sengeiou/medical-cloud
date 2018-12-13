@@ -27,6 +27,8 @@
         <module>health-service</module>
         <module>easemob-module</module>
         <module>orders-service</module>
+        <module>log-service</module>
+        <module>log-module</module>
     </modules>
 
     
