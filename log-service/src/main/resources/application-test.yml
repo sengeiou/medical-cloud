@@ -1,19 +1,24 @@
 server:
   #端口号
-  port: 8003
+  port: 38240
   #项目名，如果不设定，默认是 /
 #  context-path: /log-service
 
 spring:
   application:
     name: log-service
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    timeZone: GMT+8
   boot:
       admin:
         client:
-          service-base-url: http://192.168.3.132:9002
-        url:  http://192.168.3.132:9002
+          service-base-url: http://192.168.3.132:38110
+        url:  http://192.168.3.132:38110
+
+
   zipkin:
-    base-url: http://192.168.3.132:9001
+    base-url: http://192.168.3.132:38170
   data:
     mongodb:
       uri: mongodb://root:root@192.168.3.132:27017/test
@@ -27,12 +32,13 @@ spring:
     virtual-host: /
 
 eureka:
-    instance:
-      lease-renewal-interval-in-seconds: 30
-    client:
-      registry-fetch-interval-seconds: 15
-      service-url:
-        defaultZone:  http://192.168.3.132:9003/eureka/
+  instance:
+    preferIpAddress: true
+    lease-renewal-interval-in-seconds: 30
+  client:
+    registry-fetch-interval-seconds: 15
+    service-url:
+      defaultZone:  http://192.168.3.100:38130/eureka/,http://192.168.3.132:38130/eureka/
 
 management:
   security:

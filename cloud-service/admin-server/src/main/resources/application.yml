@@ -1,5 +1,5 @@
 server:
-  port: 9002
+  port: 38110
 logging:
   level:
     tk:

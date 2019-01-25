@@ -1,9 +1,3 @@
-server:
-  #端口号
-  port: 8001
-  #项目名，如果不设定，默认是 /
-#  context-path: /log-service
-
 spring:
   application:
     name: operation-service
@@ -31,23 +25,24 @@ spring:
 #          service-base-url: http://192.168.3.100:9002
 #        url:  http://192.168.3.100:9002
   zipkin:
-    base-url: http://192.168.3.100:9001
+    base-url: http://192.168.3.132:9001
   rabbitmq:
         host: 192.168.3.132
         port: 5672
         username: guest
         password: guest
-        publisher-confirms: true
-        publisher-returns: true
+        publisher-confirms: false
+        publisher-returns: false
         virtual-host: /
 
 eureka:
     instance:
+      preferIpAddress: true
       lease-renewal-interval-in-seconds: 30
     client:
       registry-fetch-interval-seconds: 15
       service-url:
-        defaultZone:  http://192.168.3.132:9003/eureka/
+        defaultZone:  http://192.168.3.100:38130/eureka/,http://192.168.3.132:38130/eureka/
 
 management:
   security:

@@ -1,10 +1,8 @@
-server:
-  #端口号
-  port: 8101
-
 spring:
   application:
     name: manage-web
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
 #  boot:
 #    admin:
 #      client:
@@ -26,17 +24,18 @@ spring:
       port: 5672
       username: guest
       password: guest
-      publisher-confirms: true
+      publisher-confirms: false
       publisher-returns: true
       virtual-host: /
 
 eureka:
     instance:
+      prefer-ip-address: true
       lease-renewal-interval-in-seconds: 30
     client:
       registry-fetch-interval-seconds: 15
       service-url:
-        defaultZone:  http://192.168.3.132:9003/eureka/
+        defaultZone:  http://192.168.3.100:38130/eureka/,http://192.168.3.132:38130/eureka/
 
 management:
   security:

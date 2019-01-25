@@ -15,8 +15,8 @@ public interface RequestLogService {
 
     List<RequestLog> findByActionNameLike(String actionName);
 
-    Page<RequestLog> findByActionNameLike(String actionName, Integer page,Integer rows);
+    Page<RequestLog> findByActionNameLike(String actionName, Integer page, Integer rows);
 
-    Pager<RequestLog> findByConditionLike(RequestLog requestLog, Integer page, Integer rows);
+    Pager<RequestLog> findByConditionLike(RequestLog requestLog,String createTimeBeforeStr, String createTimeAfterStr, Integer page, Integer rows);
 
 }

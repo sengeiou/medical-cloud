@@ -7,18 +7,21 @@ server:
 spring:
   application:
     name: log-service
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    timeZone: GMT+8
   boot:
       admin:
         client:
-          service-base-url: http://127.0.0.1:38110
-        url:  http://127.0.0.1:38110
+          service-base-url: http://192.168.3.132:38110
+        url:  http://192.168.3.132:38110
   zipkin:
-    base-url: http://127.0.0.1:38170
+    base-url: http://192.168.3.132:38170
   data:
     mongodb:
-      uri: mongodb://log:log@172.16.148.166:27017/log
+      uri: mongodb://root:root@192.168.3.132:27017/test
   rabbitmq:
-    host: 127.0.0.1
+    host: 192.168.3.132
     port: 5672
     username: guest
     password: guest
@@ -28,11 +31,12 @@ spring:
 
 eureka:
     instance:
+      preferIpAddress: true
       lease-renewal-interval-in-seconds: 30
     client:
       registry-fetch-interval-seconds: 15
       service-url:
-        defaultZone:  http://127.0.0.1:38130/eureka/
+        defaultZone:  http://192.168.3.100:38130/eureka/
 
 management:
   security:

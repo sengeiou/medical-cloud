@@ -1,10 +1,10 @@
-server.port: 9004
+server.port: 38120
 spring:
   application:
     name: config-server
   boot:
     admin:
-      url:  http://192.168.3.100:9002
+      url:  http://192.168.3.100:38110
   cloud.config:
       server:
         git:
@@ -24,7 +24,7 @@ eureka:
     client:
       registry-fetch-interval-seconds: 15
       service-url:
-        defaultZone:  http://192.168.3.100:9003/eureka/
+        defaultZone:  http://192.168.3.100:38130/eureka/
 
 management:
   security:

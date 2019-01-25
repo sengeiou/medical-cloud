@@ -45,11 +45,13 @@ String date= format.format(new Date());
 	                width: '150',
 	                title: '请求输入',
 	                field: 'request'
-	            }, {
-	                width: '250',
-	                title: '请求输出',
-	                field: 'response'
-	            }, {
+	            }
+	            // , {
+	            //     width: '250',
+	            //     title: '请求输出',
+	            //     field: 'response'
+	            // }
+	            , {
 	                width: '80',
 	                title: '客户端ip',
 	                field: 'clientIp'
@@ -57,10 +59,6 @@ String date= format.format(new Date());
 	                width: '130',
 	                title: '服务端ip',
 	                field: 'serverIp'
-	            }, {
-	                width: '60',
-	                title: '版本',
-	                field: 'version'
 	            }, {
 	                width: '30',
 	                title: '状态',
@@ -76,15 +74,24 @@ String date= format.format(new Date());
 	                    }
 	                }
 	            }, {
-	                width: '160',
+	                width: '130',
 	                title: '创建时间',
-	                field: 'createtime',
+	                field: 'createTime',
 	                formatter : function(value, row, index) {
 	                	var crtTime = new Date(value);
 	                	var str = formatDate("yyyy-MM-dd hh:mm:ss",crtTime);
 	                    return str;
 	                }
-	            }]]
+	            }, {
+                    width: '130',
+                    title: '更新时间',
+                    field: 'updateTime',
+                    formatter : function(value, row, index) {
+                        var crtTime = new Date(value);
+                        var str = formatDate("yyyy-MM-dd hh:mm:ss",crtTime);
+                        return str;
+                    }
+                }]]
 	        });
 	    });
 
@@ -121,14 +128,17 @@ String date= format.format(new Date());
         <form id="searchForm">
             <table>
                 <tr>
-                    <th>年月:</th>
-                    <td><input type="text" id="storage_table" name="storage_table" onclick="WdatePicker({readOnly:true,dateFmt:'yyyy-MM'})" readonly="readonly" value="<%=date%>" /></td>
+                    <th>请求名称:</th>
+                    <td><input name="actionName" placeholder="请输入请求名称"/></td>
                     <th></th>
-                    <th>用户名:</th>
-                    <td><input name="userName" placeholder="请输入用户名"/></td>
+                    <th>请求输入:</th>
+                    <td><input name="request" placeholder="请输入请求输入"/></td>
                     <th></th>
-                    <th>电话号码:</th>
-                    <td><input name="userPhone" placeholder="请输入电话号码"/></td>
+                    <th>请求开始时间:</th>
+                    <td><input type="text" id="createTimeBeforeStr" name="createTimeBeforeStr" onclick="WdatePicker({readOnly:true,dateFmt:'yyyy-MM-dd HH:mm:ss'})" readonly="readonly" value="" /></td>
+                    <th></th>
+                    <th>请求结束时间:</th>
+                    <td><input type="text" id="createTimeAfterStr" name="createTimeAfterStr" onclick="WdatePicker({readOnly:true,dateFmt:'yyyy-MM-dd HH:mm:ss'})" readonly="readonly" value="" /></td>
                     <th></th>
                     <td>
                     	<a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-search',plain:true" onclick="searchFun();">查询</a>

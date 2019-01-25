@@ -7,7 +7,6 @@ import com.zhou.medical.common.entity.operation.PackageVersionDoctor;
 import com.zhou.medical.common.util.FileFilterUtils;
 import com.zhou.medical.common.util.UploadFilesUtils;
 import com.zhou.medical.log.annotation.SystemControllerLog;
-import com.zhou.medical.manager.TestAnn;
 import com.zhou.medical.manager.client.operation.DoctorApkFeignClient;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

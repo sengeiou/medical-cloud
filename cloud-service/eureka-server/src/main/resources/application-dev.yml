@@ -1,19 +1,21 @@
 server:
-  port: 9003
+  port: 38130
 
 spring:
   application:
     name: eureka-server
   boot:
     admin:
-      url: http://127.0.0.1:9002
+      url: http://192.168.3.132:38110
 
 eureka:
+  instance:
+    hostname: eureka1
   client:
     register-with-eureka: false
     fetch-registry: false
     serviceUrl:
-      defaultZone:  http://127.0.0.1:${server.port}/eureka/
+      defaultZone:  192.168.3.132:${server.port}/eureka/
   server:
     enable-self-preservation: false
 

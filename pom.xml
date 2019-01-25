@@ -29,6 +29,7 @@
         <module>orders-service</module>
         <module>log-service</module>
         <module>log-module</module>
+        <module>zhou-test</module>
     </modules>
 
     

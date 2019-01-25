@@ -3,4 +3,4 @@ spring:
     active: dev
 
 #启动命令
-#java -jar -Dspring.profiles.active=prod hsp-log-service.jar >service.log 2>&1 &
+#java -jar -Dspring.profiles.active=test eureka-server-0.0.1-SNAPSHOT.jar >eureka.log 2>&1 &

@@ -1,9 +1,3 @@
-server:
-  #端口号
-  port: 9001
-#项目名，如果不设定，默认是 /
-#  context-path: /log-service
-
 spring:
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
@@ -23,8 +17,27 @@ spring:
       url: jdbc:mysql://192.168.214.111:3306/hsp?useUnicode=true&characterEncoding=utf-8&useSSL=false&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Asia/Shanghai&zeroDateTimeBehavior=convertToNull
       username: gmcc
       password: hsp10086
+ boot:
+      admin:
+        client:
+          service-base-url: http://127.0.0.1:9002
+        url:  http://127.0.0.1:9002
+  zipkin:
+    base-url: http://127.0.0.1:9001
 
+eureka:
+    instance:
+      preferIpAddress: true
+      lease-renewal-interval-in-seconds: 30
+    client:
+      registry-fetch-interval-seconds: 15
+      service-url:
+        defaultZone:  http://127.0.0.1:9003/eureka/
+
+management:
+  security:
+    enabled:  false
 
 logging:
   level:
-    com.cmcc.hsp: debug
+    com.zhou.medical: debug

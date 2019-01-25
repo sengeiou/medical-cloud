@@ -9,11 +9,15 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
 @Service
 public class RequestLogServiceImpl implements RequestLogService {
+
+    private SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
     @Autowired
     private RequestLogRepository requestLogRepository;
@@ -38,8 +42,8 @@ public class RequestLogServiceImpl implements RequestLogService {
     }
 
     @Override
-    public Pager<RequestLog> findByConditionLike(RequestLog requestLog, Integer page, Integer rows) {
-        System.out.println("requestLog======================:"+requestLog);
+    public Pager<RequestLog> findByConditionLike(RequestLog requestLog, String createTimeBeforeStr, String createTimeAfterStr, Integer page, Integer rows) {
+        System.out.println("requestLog======================:" + requestLog);
         PageRequest pageRequest = new PageRequest(page - 1, rows);
 
         String actionName = "";
@@ -48,8 +52,8 @@ public class RequestLogServiceImpl implements RequestLogService {
         int state = requestLog.getState();
         String request = "";
         String response = "";
-        Date createTimeBefore = requestLog.getCreateTime();
-        Date createTimeAfter = requestLog.getCreateTime();
+        Date createTimeBefore = null;
+        Date createTimeAfter = null;
 
         if (requestLog.getActionName() != null) {
             actionName = requestLog.getActionName();
@@ -71,22 +75,34 @@ public class RequestLogServiceImpl implements RequestLogService {
             response = requestLog.getResponse();
         }
 
-        if (createTimeBefore == null) {
+        if (createTimeBeforeStr == null) {
             createTimeBefore = new Date(0);
+        } else {
+            try {
+                createTimeBefore = simpleDateFormat.parse(createTimeBeforeStr);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
         }
 
-        if (createTimeAfter == null) {
-            createTimeAfter = new Date(System.currentTimeMillis()+1*24*3600*1000);
+        if (createTimeAfterStr == null) {
+            createTimeAfter = new Date(System.currentTimeMillis() + 1 * 24 * 3600 * 1000);
+        } else {
+            try {
+                createTimeAfter = simpleDateFormat.parse(createTimeAfterStr);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
         }
 
 
 //        state = 1;
 
-        Page<RequestLog> pageRequestLog = requestLogRepository.findByConditionLike(actionName,className,methodName,
-                state,request,response,createTimeBefore,createTimeAfter, pageRequest);
+        Page<RequestLog> pageRequestLog = requestLogRepository.findByConditionLike(actionName, className, methodName,
+                state, request, response, createTimeBefore, createTimeAfter, pageRequest);
         Pager<RequestLog> pager = new Pager<>();
         pager.setList(pageRequestLog.getContent());
-        pager.setTotalCount((int)pageRequestLog.getTotalElements());
+        pager.setTotalCount((int) pageRequestLog.getTotalElements());
 
         return pager;
     }
