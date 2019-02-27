@@ -6,6 +6,7 @@ import com.zhou.medical.common.entity.Results;
 import com.zhou.medical.common.entity.operation.PackageVersionPatient;
 import com.zhou.medical.common.util.FileFilterUtils;
 import com.zhou.medical.common.util.UploadFilesUtils;
+import com.zhou.medical.log.annotation.SystemControllerLog;
 import com.zhou.medical.manager.client.operation.PatientApkFeignClient;
 import net.dongliu.apk.parser.ApkFile;
 import net.dongliu.apk.parser.bean.ApkMeta;
@@ -46,6 +47,7 @@ public class PatientApkController {
      */
     @RequestMapping(value = "add")
     @ResponseBody
+    @SystemControllerLog("添加单个apk")
     public Results<PackageVersionPatient> addPackage(HttpServletRequest request, String parame,
                                                      MultipartFile file) {
         Results<PackageVersionPatient> results = new Results<PackageVersionPatient>();
@@ -126,6 +128,7 @@ public class PatientApkController {
      * @return
      */
     @RequestMapping(value = "/manager", method = RequestMethod.GET)
+    @SystemControllerLog("APK管理页")
     public String manager() {
         return "/packageVersion/patientApk";
     }
@@ -136,6 +139,7 @@ public class PatientApkController {
      * @return
      */
     @RequestMapping(value = "/addPage", method = RequestMethod.GET)
+    @SystemControllerLog("用户管理页")
     public String addPage() {
 
         return "/packageVersion/patientApkAdd";
@@ -149,6 +153,7 @@ public class PatientApkController {
      */
     @RequestMapping(value = "findPage", method = RequestMethod.POST)
     @ResponseBody
+    @SystemControllerLog("获取apklist")
     public Map<String, Object> findPage(HttpServletRequest request, PackageVersionPatient packageVersionPatient,
                                         @RequestParam(value = "page", defaultValue = "1") int page,
                                         @RequestParam(value = "rows", defaultValue = "10") int rows) {
@@ -172,6 +177,7 @@ public class PatientApkController {
      */
     @RequestMapping(value = "getLP")
     @ResponseBody
+    @SystemControllerLog("获取新版本的apk")
     public Results<PackageVersionPatient> getLatestPackage(HttpServletRequest request) {
         Results<PackageVersionPatient> results = new Results<PackageVersionPatient>();
         try {
@@ -193,6 +199,7 @@ public class PatientApkController {
      * @param resp
      */
     @RequestMapping(value = "downloadApk", method = RequestMethod.GET)
+    @SystemControllerLog("下载apk")
     public void downloadApk(HttpServletResponse resp) {
         try {
             PackageVersionPatient packageVersionPatient = patientApkFeignClient.findByParam("selectByStatus_1", new PackageVersionPatient());

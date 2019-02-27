@@ -6,10 +6,10 @@ spring:
 #  boot:
 #    admin:
 #      client:
-#        service-base-url: http://192.168.3.100:9002
-#      url:  http://192.168.3.100:9002
+#        service-base-url: http://192.168.3.132:38110
+#      url:  http://192.168.3.132:38110
   zipkin:
-    base-url: http://192.168.3.100:9001
+    base-url: http://192.168.3.100:38170
   output.ansi.enabled: always
   mvc:
     view:
@@ -39,7 +39,7 @@ eureka:
 
 management:
   security:
-    enabled:  false
+    enabled:  true
 
 
 #请求处理的超时时间

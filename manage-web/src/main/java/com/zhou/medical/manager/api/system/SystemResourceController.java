@@ -4,6 +4,7 @@ import com.zhou.medical.common.entity.MessageCode;
 import com.zhou.medical.common.entity.Results;
 import com.zhou.medical.common.entity.Tree;
 import com.zhou.medical.common.entity.operation.SystemResource;
+import com.zhou.medical.log.annotation.SystemControllerLog;
 import com.zhou.medical.manager.client.operation.SystemResourceFeignClient;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,6 +40,7 @@ public class SystemResourceController {
      * @return
      */
     @RequestMapping(value = "/manager", method = RequestMethod.GET)
+    @SystemControllerLog("manager")
     public String manager() {
         return "/sys/admin/resource";
     }
@@ -50,6 +52,7 @@ public class SystemResourceController {
      */
     @RequestMapping(value = "/findTreeGrid", method = RequestMethod.POST)
     @ResponseBody
+    @SystemControllerLog("findTreeGrid")
     public List<SystemResource> findTreeGrid() {
         List<SystemResource> treeGrid = systemResourceFeignClient.getList("selectAll", new SystemResource());
 
@@ -62,6 +65,7 @@ public class SystemResourceController {
      * @return
      */
     @RequestMapping("/addPage")
+    @SystemControllerLog("addPage")
     public String addPage() {
         return "/sys/admin/resourceAdd";
     }
@@ -74,6 +78,7 @@ public class SystemResourceController {
      */
     @RequestMapping("/add")
     @ResponseBody
+    @SystemControllerLog("add")
     public Results<Map<String, Object>> add(SystemResource resource) {
     	Results<Map<String, Object>> results = new Results<Map<String, Object>>();
         System.out.println("systemResource.getName()4444444444444444:"+resource.getName());
@@ -98,6 +103,7 @@ public class SystemResourceController {
      */
     @RequestMapping("/showAllTree")
     @ResponseBody
+    @SystemControllerLog("showAllTree")
     public List<Tree> showAllTree() {
         return systemResourceFeignClient.findAllTree();
     }
@@ -108,6 +114,7 @@ public class SystemResourceController {
      */
     @RequestMapping(value = "/showAllTrees", method = RequestMethod.POST)
     @ResponseBody
+    @SystemControllerLog("showAllTrees")
     public List<Tree> showAllTrees() {
         return systemResourceFeignClient.findAllTrees();
     }
@@ -119,6 +126,7 @@ public class SystemResourceController {
      * @return
      */
     @RequestMapping("/editPage")
+    @SystemControllerLog("editPage")
     public String editPage(Model model, int id) {
         SystemResource systemResource = systemResourceFeignClient.findById("selectByPrimaryKey", id);
 		model.addAttribute("systemResource", systemResource);
@@ -133,6 +141,7 @@ public class SystemResourceController {
      */
     @RequestMapping("/edit")
     @ResponseBody
+    @SystemControllerLog("edit")
     public Results<Map<String, Object>> edit(SystemResource resource) {
     	Results<Map<String, Object>> results = new Results<Map<String, Object>>();
 
@@ -158,6 +167,7 @@ public class SystemResourceController {
      */
     @RequestMapping("/delete")
     @ResponseBody
+    @SystemControllerLog("delete")
     public Results<Map<String, Object>> delete(int id) {
     	Results<Map<String, Object>> results = new Results<Map<String, Object>>();
 

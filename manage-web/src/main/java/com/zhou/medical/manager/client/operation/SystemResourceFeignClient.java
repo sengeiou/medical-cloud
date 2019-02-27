@@ -2,6 +2,7 @@ package com.zhou.medical.manager.client.operation;
 
 import com.zhou.medical.common.entity.Tree;
 import com.zhou.medical.common.entity.operation.SystemResource;
+import com.zhou.medical.manager.client.hystrix.SystemResourceFeignClientHystrix;
 import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
-@FeignClient(name = "OPERATION-SERVICE")
-@RequestMapping("/systemResource")
+@FeignClient(name = "OPERATION-SERVICE",fallback = SystemResourceFeignClientHystrix.class,path = "/systemResource")
+//@RequestMapping("/systemResource")
 public interface SystemResourceFeignClient {
 
     @RequestMapping(value = "getList")

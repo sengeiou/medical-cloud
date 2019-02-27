@@ -2,6 +2,7 @@ package com.zhou.medical.manager.client.operation;
 
 import com.zhou.medical.common.entity.Pager;
 import com.zhou.medical.common.entity.operation.SystemRole;
+import com.zhou.medical.manager.client.hystrix.SystemRoleFeignClientHystrix;
 import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
-@FeignClient(name = "OPERATION-SERVICE")
-@RequestMapping(value = "/systemRole")
+@FeignClient(name = "OPERATION-SERVICE",fallback = SystemRoleFeignClientHystrix.class,path = "/systemRole")
+//@RequestMapping(value = "/systemRole")
 public interface SystemRoleFeignClient {
 
     @RequestMapping(value = "getPager")

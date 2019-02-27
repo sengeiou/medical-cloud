@@ -51,6 +51,7 @@ public class DoctorApkController {
     @ApiOperation(value = "addPackage", notes = "addPackage")
     @RequestMapping(value = "add", method = RequestMethod.POST)
     @ResponseBody
+    @SystemControllerLog("addPackage")
     public Results<PackageVersionDoctor> addPackage(HttpServletRequest request, String parame, MultipartFile file) {
         Results<PackageVersionDoctor> results = new Results<PackageVersionDoctor>();
         String path = request.getSession().getServletContext().getRealPath("/");
@@ -129,6 +130,7 @@ public class DoctorApkController {
      * @return
      */
     @RequestMapping(value = "/manager", method = RequestMethod.GET)
+    @SystemControllerLog("manager")
     public String manager() {
         return "/packageVersion/doctorApk";
     }
@@ -139,6 +141,7 @@ public class DoctorApkController {
      * @return
      */
     @RequestMapping(value = "/addPage", method = RequestMethod.GET)
+    @SystemControllerLog("addPage")
     public String addPage() {
 
         return "/packageVersion/doctorApkAdd";

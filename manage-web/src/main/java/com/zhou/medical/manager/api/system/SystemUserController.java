@@ -14,6 +14,7 @@ import com.zhou.medical.common.entity.operation.SystemRole;
 import com.zhou.medical.common.entity.operation.SystemUser;
 import com.zhou.medical.common.util.SecurityUtils;
 import com.zhou.medical.common.util.Toolkit;
+import com.zhou.medical.log.annotation.SystemControllerLog;
 import com.zhou.medical.manager.client.account.DoctorsTeamFeignClient;
 import com.zhou.medical.manager.client.operation.SystemRoleFeignClient;
 import com.zhou.medical.manager.client.operation.SystemUserFeignClient;
@@ -70,6 +71,7 @@ public class SystemUserController {
 	 */
 	@RequestMapping(value = "login")
 	@ResponseBody
+	@SystemControllerLog("login")
 	public Results<String> login(Locale locale, Model model, HttpServletRequest request, HttpServletResponse response,
 								 String userName, String userPassword, String verifyCode) {
 		Results<String> results = new Results<String>();
@@ -152,6 +154,7 @@ public class SystemUserController {
 	 */
 	@ResponseBody
 	@RequestMapping(value = "logout")
+	@SystemControllerLog("logout")
 	public String logout(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.getSession().removeAttribute("systemUser");
@@ -168,6 +171,7 @@ public class SystemUserController {
 	 * @throws IOException
 	 */
 	@RequestMapping(value = "userGoto")
+	@SystemControllerLog("userGoto")
 	public String userGoto(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		response.sendRedirect(request.getContextPath() + "/msg/list2.htm");
@@ -181,6 +185,7 @@ public class SystemUserController {
 	 * @return
 	 */
 	@RequestMapping(value = "/addPage", method = RequestMethod.GET)
+	@SystemControllerLog("addPage")
 	public String addPage(Model model) {
 		List<DoctorsTeam> doctorsTeamList = doctorsTeamFeignClient.getList("selectAll", new DoctorsTeam());
 		model.addAttribute("doctorsTeamList", doctorsTeamList);
@@ -197,6 +202,7 @@ public class SystemUserController {
 	 * @return
 	 */
 	@RequestMapping(value = "/manager", method = RequestMethod.GET)
+	@SystemControllerLog("manager")
 	public String manager() {
 		return "/sys/admin/systemuser";
 	}
@@ -208,6 +214,7 @@ public class SystemUserController {
 	 */
 	@RequestMapping(value = "/add")
 	@ResponseBody
+	@SystemControllerLog("add")
 	public Results<String> add(HttpServletRequest request, SystemUser systemUser, String userName) {
 		Results<String> results = new Results<String>();
 		if (systemUser.getUserName().length() > 20 || systemUser.getUserName().length() < 4) {
@@ -252,6 +259,7 @@ public class SystemUserController {
 	 */
 	@RequestMapping("/delete")
 	@ResponseBody
+	@SystemControllerLog("delete")
 	public Results<Map<String, Object>> delete(int id) {
 		Results<Map<String, Object>> result = new Results<Map<String, Object>>();
 		try {
@@ -276,6 +284,7 @@ public class SystemUserController {
 	 * @return
 	 */
 	@RequestMapping(value = "/assignRolePage", method = RequestMethod.GET)
+	@SystemControllerLog("assignRolePage")
 	public String assignRolePage(Integer id, Model model) {
 		SystemUser userVo = systemUserFeignClient.findByParamFromSelectByPrimaryKey(id);
 		model.addAttribute("user", userVo);
@@ -293,6 +302,7 @@ public class SystemUserController {
 	 */
 	@RequestMapping(value = "/assignRole", method = RequestMethod.POST)
 	@ResponseBody
+	@SystemControllerLog("assignRole")
 	public Results<String> assignRole(SystemUser systemUser) {
 		Results<String> results = new Results<String>();
 		try {
@@ -315,6 +325,7 @@ public class SystemUserController {
 	 */
 	@RequestMapping(value = "/forbiddenOrEnable", method = RequestMethod.POST)
 	@ResponseBody
+	@SystemControllerLog("forbiddenOrEnable")
 	public Results<String> forbiddenOrEnable(SystemUser systemUser) {
 		Results<String> results = new Results<String>();
 		try {
@@ -337,6 +348,7 @@ public class SystemUserController {
 	 */
 	@RequestMapping(value = "/resetPwdFun", method = RequestMethod.POST)
 	@ResponseBody
+	@SystemControllerLog("resetPwdFun")
 	public Results<String> resetPwdFun(SystemUser systemUser) {
 		Results<String> results = new Results<String>();
 		try {
@@ -361,6 +373,7 @@ public class SystemUserController {
 	 */
 	@RequestMapping(value = "/findUserPage", method = RequestMethod.POST)
 	@ResponseBody
+	@SystemControllerLog("findUserPage")
 	public Map<String, Object> findUserPage(SystemUser systemUser,
 											@RequestParam(value = "page", defaultValue = "1") int page,
 											@RequestParam(value = "rows", defaultValue = "10") int rows) {
@@ -383,6 +396,7 @@ public class SystemUserController {
 	 * @return
 	 */
 	@RequestMapping(value = "/editPwdPage", method = RequestMethod.GET)
+	@SystemControllerLog("editPwdPage")
 	public String editPwdPage() {
 		return "/sys/admin/userEditPwd";
 	}
@@ -397,6 +411,7 @@ public class SystemUserController {
 	 */
 	@RequestMapping(value = "/editUserPwd", method = RequestMethod.POST)
 	@ResponseBody
+	@SystemControllerLog("editUserPwd")
 	public Results<String> editUserPwd(HttpServletRequest request, String userName, String oldPwd, String pwd) {
 		Results<String> results = new Results<String>();
 
@@ -452,6 +467,7 @@ public class SystemUserController {
 	 */
 	@RequestMapping(value="/queryRoleById", method={RequestMethod.POST})
 	@ResponseBody
+	@SystemControllerLog("queryRoleById")
 	public SystemRole queryRoleById(Integer id) throws Exception {
 		SystemRole systemRole = systemRoleFeignClient.findById("selectByPrimaryKey", id);
 		return systemRole;

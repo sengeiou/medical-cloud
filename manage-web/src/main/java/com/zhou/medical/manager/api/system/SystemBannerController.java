@@ -6,6 +6,7 @@ import com.zhou.medical.common.entity.Results;
 import com.zhou.medical.common.entity.operation.SystemBanner;
 import com.zhou.medical.common.util.FileFilterUtils;
 import com.zhou.medical.common.util.UploadFilesUtils;
+import com.zhou.medical.log.annotation.SystemControllerLog;
 import com.zhou.medical.manager.client.operation.SystemBannerFeignClient;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -51,6 +52,7 @@ public class SystemBannerController {
 	 */
 	@RequestMapping(value = "add", method = RequestMethod.POST)
 	@ResponseBody
+	@SystemControllerLog("新增")
 	public Results<String> add(HttpServletRequest request, SystemBanner systemBanner, MultipartFile file){
 		Results<String> results = new Results<String>();
 		try {
@@ -84,7 +86,8 @@ public class SystemBannerController {
 	 * @return
 	 */
     @RequestMapping(value = "/manager", method = RequestMethod.GET)
-    public String manager() {
+	@SystemControllerLog("manager")
+	public String manager() {
     	 return "/sys/banner/systemBanner";
     }
 
@@ -97,6 +100,7 @@ public class SystemBannerController {
 	 */
 	@RequestMapping(value = "findPage", method = RequestMethod.POST)
 	@ResponseBody
+	@SystemControllerLog("findPage")
 	public Map<String, Object> findPage(SystemBanner systemBanner,
                                         @RequestParam(value = "page", defaultValue = "1") int page,
                                         @RequestParam(value = "rows", defaultValue = "10") int rows){
@@ -120,6 +124,7 @@ public class SystemBannerController {
 	 * @return
 	 */
 	@RequestMapping("/editPage")
+	@SystemControllerLog("editPage")
 	public String editPage(int id, Model model) {
 		try {
 			SystemBanner systemBanner = systemBannerFeignClient.findById("selectByPrimaryKey", id);
@@ -137,6 +142,7 @@ public class SystemBannerController {
 	 */
 	@RequestMapping(value = "edit", method = RequestMethod.POST)
 	@ResponseBody
+	@SystemControllerLog("edit")
 	public Results<String> edit(HttpServletRequest request, SystemBanner systemBanner, MultipartFile file){
 		Results<String> results = new Results<String>();
 		try {
@@ -170,6 +176,7 @@ public class SystemBannerController {
 	 */
 	@RequestMapping(value = "delete", method = RequestMethod.POST)
 	@ResponseBody
+	@SystemControllerLog("delete")
 	public Results<String> delete(Integer id){
 		Results<String> results = new Results<String>();
 		try {
@@ -199,6 +206,7 @@ public class SystemBannerController {
 	 */
 	@RequestMapping("/reject")
 	@ResponseBody
+	@SystemControllerLog("reject")
 	public Results<Map<String, Object>> reject(int id) {
 		Results<Map<String, Object>> result = new Results<Map<String, Object>>();
 		try {
@@ -220,6 +228,7 @@ public class SystemBannerController {
 	
 	@RequestMapping("/pass")
 	@ResponseBody
+	@SystemControllerLog("pass")
 	public Results<Map<String, Object>> pass(int id, Model model) {
 		Results<Map<String, Object>> result = new Results<Map<String, Object>>();
 		try {

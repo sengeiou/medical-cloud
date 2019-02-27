@@ -8,6 +8,7 @@ import com.zhou.medical.common.entity.account.ContractedHospitals;
 import com.zhou.medical.common.entity.account.DoctorsTeam;
 import com.zhou.medical.common.util.FileFilterUtils;
 import com.zhou.medical.common.util.UploadFilesUtils;
+import com.zhou.medical.log.annotation.SystemControllerLog;
 import com.zhou.medical.manager.client.account.ContractedHospitalsFeignClient;
 import com.zhou.medical.manager.client.account.DoctorsTeamFeignClient;
 import org.apache.commons.lang.StringUtils;
@@ -55,6 +56,7 @@ public class SystemHospitalController extends BaseController {
      * @return
      */
     @RequestMapping(value = "/manager", method = RequestMethod.GET)
+    @SystemControllerLog("manager")
     public String manager() {
         return "/sys/hospital/hospital";
     }
@@ -66,6 +68,7 @@ public class SystemHospitalController extends BaseController {
      */
     @RequestMapping(value = "/findUserPage")
     @ResponseBody
+    @SystemControllerLog("findUserPage")
     public Map<String, Object> findUserPage(HttpServletResponse response, String keyword,
                                             @RequestParam(value = "page", defaultValue = "1") Long page,
                                             @RequestParam(value = "rows", defaultValue = "10") Long rows) {
@@ -97,6 +100,7 @@ public class SystemHospitalController extends BaseController {
      * @return
      */
     @RequestMapping("/queryPage")
+    @SystemControllerLog("queryPage")
     public String queryPage(int id, Model model) {
         try {
             DoctorsTeam doctorsTeam = doctorsTeamFeignClient.findById("selectByPrimaryKey", id);
@@ -115,12 +119,14 @@ public class SystemHospitalController extends BaseController {
     }
 
     @RequestMapping("/addPage")
+    @SystemControllerLog("addPage")
     public String addPage() {
         return "/sys/hospital/hospitalAdd";
     }
 
     @RequestMapping(value = "add", method = RequestMethod.POST)
     @ResponseBody
+    @SystemControllerLog("add")
     public Results<Map<String, Object>> add(HttpServletRequest request, DoctorsTeam doctorsTeam_,
                                             MultipartFile file) {
         Results<Map<String, Object>> results = new Results<Map<String, Object>>();
@@ -160,6 +166,7 @@ public class SystemHospitalController extends BaseController {
      */
     @RequestMapping("/delete")
     @ResponseBody
+    @SystemControllerLog("delete")
     public Results<Map<String, Object>> delete(int id) {
         Results<Map<String, Object>> result = new Results<Map<String, Object>>();
         try {
@@ -188,6 +195,7 @@ public class SystemHospitalController extends BaseController {
      * @return
      */
     @RequestMapping("/editPage")
+    @SystemControllerLog("editPage")
     public String editPage(int id, Model model) {
         try {
             DoctorsTeam doctorsTeam = doctorsTeamFeignClient.findById("selectByPrimaryKey", id);
@@ -214,6 +222,7 @@ public class SystemHospitalController extends BaseController {
      */
     @RequestMapping("/edit")
     @ResponseBody
+    @SystemControllerLog("edit")
     public Results<Map<String, Object>> edit(HttpServletRequest request, DoctorsTeam doctorsTeam_,
                                              MultipartFile file) {
         Results<Map<String, Object>> results = new Results<Map<String, Object>>();

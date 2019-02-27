@@ -1,11 +1,13 @@
 spring:
   application:
     name: manage-web
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
   boot:
     admin:
       client:
-        service-base-url: http://127.0.0.1:9002
-      url:  http://127.0.0.1:9002
+        service-base-url: http://127.0.0.1:38110
+      url:  http://127.0.0.1:38110
   zipkin:
     base-url: http://127.0.0.1:9001
   output.ansi.enabled: always

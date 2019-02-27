@@ -3,4 +3,5 @@ spring:
     active: dev
 
 #启动命令
-#java -jar -Dspring.profiles.active=test eureka-server-0.0.1-SNAPSHOT.jar >eureka.log 2>&1 &
+#nohup java -jar -Dspring.profiles.active=test eureka-server-0.0.1-SNAPSHOT.jar >eureka.log 2>&1 &
+#nohup java -jar -Dspring.profiles.active=test0 -Deureka.server.enable-self-preservation=true eureka-server-0.0.1-SNAPSHOT.jar >eureka.log 2>&1 &
