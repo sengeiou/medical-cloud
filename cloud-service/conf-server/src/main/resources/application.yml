@@ -2,21 +2,12 @@ server.port: 38120
 spring:
   application:
     name: config-server
-  boot:
-    admin:
-      url:  http://192.168.3.100:38110
   cloud.config:
       server:
         git:
-          uri: https://github.com/backkoms/spring-cloud-repo
+          uri: https://github.com/zhouzhouluo/microservicecloud-config.git
         searchPaths: repo
       label:  master
-
-  rabbitmq:
-    host: localhost
-    port: 5672
-    username: guest
-    password: guest
 
 eureka:
     instance:
@@ -24,7 +15,7 @@ eureka:
     client:
       registry-fetch-interval-seconds: 15
       service-url:
-        defaultZone:  http://192.168.3.100:38130/eureka/
+        defaultZone:  http://127.0.0.1:38130/eureka/
 
 management:
   security:
@@ -33,10 +24,6 @@ management:
 #enforce config-service security
 security:
   user:
-    name: user
-    password: yourPW
+    name: zhouzhouluo
+    password: zhouzhouluo
 
-logging:
-  level:
-    tk:
-      mybatis:  TRACE
