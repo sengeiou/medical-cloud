@@ -2,6 +2,7 @@ package com.zhou.medical.manager.client.operation;
 
 import com.zhou.medical.common.entity.Pager;
 import com.zhou.medical.common.entity.operation.SensitiveWord;
+import com.zhou.medical.manager.client.hystrix.SensitiveWordFeignClientFallbackFactory;
 import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.util.List;
 import java.util.Map;
 
-@FeignClient(name = "OPERATION-SERVICE")
-@RequestMapping("/sensitiveWord")
+@FeignClient(name = "OPERATION-SERVICE",fallbackFactory = SensitiveWordFeignClientFallbackFactory.class,path = "/sensitiveWord")
+//@RequestMapping("/sensitiveWord")
 public interface SensitiveWordFeignClient {
 
 

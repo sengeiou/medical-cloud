@@ -3,6 +3,8 @@ package com.zhou.test;
 import com.google.common.base.*;
 import org.junit.Test;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -99,7 +101,26 @@ public class GuavaTest {
     private void preconditionsTest(String name, int age, String desc) {
         Preconditions.checkNotNull(name, "name may not be null");
         Preconditions.checkArgument(age >= 18 && age < 99, "age must in range (18,99)");
-        Preconditions.checkArgument(desc !=null && desc.length() < 10, "desc too long, max length is ", 10);
+        Preconditions.checkArgument(desc != null && desc.length() < 10, "desc too long, max length is ", 10);
+    }
+
+    public static void main(String[] args) {
+//        byte [] test = new byte[4];
+//        test[0] = 0x00;
+//        test[1] = 0x00;
+//        test[2] = 0x00;
+//        test[3] = 0x00;
+//
+//        System.out.println(test[0]);
+//        System.out.println(test[1]);
+//        System.out.println(test[2]);
+//        System.out.println(test[3]);
+        SimpleDateFormat sim2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        SimpleDateFormat sim = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String a = sim.format(new Date());
+        String b = sim2.format(new Date());
+        System.out.println(a);
+        System.out.println(b);
     }
 
 }

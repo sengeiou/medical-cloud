@@ -17,7 +17,7 @@
 <head>
 <%@ include file="/commons/basejs.jsp" %>
 <meta charset="utf-8">
-<title>粤健康</title>
+<title>云</title>
 	<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="">

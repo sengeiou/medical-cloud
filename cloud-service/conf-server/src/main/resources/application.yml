@@ -22,8 +22,8 @@ management:
     enabled: false
 
 #enforce config-service security
-security:
-  user:
-    name: zhouzhouluo
-    password: zhouzhouluo
+#security:
+#  user:
+#    name: zhouzhouluo
+#    password: zhouzhouluo
 

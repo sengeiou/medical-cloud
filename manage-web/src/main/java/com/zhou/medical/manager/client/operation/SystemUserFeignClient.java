@@ -3,12 +3,13 @@ package com.zhou.medical.manager.client.operation;
 import com.zhou.medical.common.entity.Pager;
 import com.zhou.medical.common.entity.operation.SystemUser;
 import com.zhou.medical.manager.client.hystrix.SystemUserFeignClientHystrix;
+import com.zhou.ribbon.config.MySelfRuleConfig;
 import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-@FeignClient(name = "OPERATION-SERVICE",fallback = SystemUserFeignClientHystrix.class,path = "/systemUser")
+@FeignClient(name = "OPERATION-SERVICE",configuration = MySelfRuleConfig.class,fallback = SystemUserFeignClientHystrix.class,path = "/systemUser")
 //@RequestMapping("/systemUser")
 public interface SystemUserFeignClient {
 

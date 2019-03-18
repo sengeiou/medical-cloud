@@ -6,6 +6,8 @@ import javax.annotation.Resource;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.zhou.medical.common.entity.MessageCode;
 import com.zhou.medical.common.entity.Pager;
 import com.zhou.medical.common.entity.Results;
@@ -215,6 +217,7 @@ public class SystemUserController {
 	@RequestMapping(value = "/add")
 	@ResponseBody
 	@SystemControllerLog("add")
+	@HystrixCommand(fallbackMethod = "processHystrix_Add")
 	public Results<String> add(HttpServletRequest request, SystemUser systemUser, String userName) {
 		Results<String> results = new Results<String>();
 		if (systemUser.getUserName().length() > 20 || systemUser.getUserName().length() < 4) {

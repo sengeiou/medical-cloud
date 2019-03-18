@@ -7,6 +7,9 @@ server:
 spring:
   application:
     name: log-service
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    timeZone: GMT+8
   boot:
       admin:
         client:

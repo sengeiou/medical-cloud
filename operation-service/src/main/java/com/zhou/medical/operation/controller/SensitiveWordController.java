@@ -1,5 +1,6 @@
 package com.zhou.medical.operation.controller;
 
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.zhou.medical.common.entity.Pager;
 import com.zhou.medical.common.entity.operation.SensitiveWord;
 import com.zhou.medical.log.annotation.SystemServiceLog;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -31,8 +33,20 @@ public class SensitiveWordController {
 
     @RequestMapping(value = "getList")
     @SystemServiceLog("sensitiveWord-getList")
+    @HystrixCommand(fallbackMethod = "getListFallback")
     List<SensitiveWord> getList(@RequestParam("mapperId") String mapperId, @RequestBody SensitiveWord sensitiveWord){
         return sensitiveWordService.getList(mapperId,sensitiveWord);
+    }
+
+    /**
+     * 断路器返回
+     * @param mapperId
+     * @param sensitiveWord
+     * @return
+     */
+    List<SensitiveWord> getListFallback(@RequestParam("mapperId") String mapperId, @RequestBody SensitiveWord sensitiveWord){
+        List<SensitiveWord> list = new ArrayList<>();
+        return list;
     }
 
     @RequestMapping(value = "insert")

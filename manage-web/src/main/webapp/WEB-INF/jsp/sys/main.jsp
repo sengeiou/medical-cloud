@@ -9,7 +9,7 @@
 <head>
     <%@ include file="/commons/basejs.jsp" %>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>粤健康-管理平台</title>
+    <title>云-管理平台</title>
     <style>
     </style>
     <%
@@ -523,7 +523,7 @@
     </div>
     <div data-options="region:'south',border:false"
          style="height: 30px; line-height: 30px; overflow: hidden; text-align: center; background-color: #eee">Copyright
-        © 2017 power by gmcc
+        © 9102 power by gmcc
     </div>
 </div>
 

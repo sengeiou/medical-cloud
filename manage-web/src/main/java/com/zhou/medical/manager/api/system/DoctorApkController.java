@@ -9,15 +9,14 @@ import com.zhou.medical.common.util.UploadFilesUtils;
 import com.zhou.medical.log.annotation.SystemControllerLog;
 import com.zhou.medical.manager.client.operation.DoctorApkFeignClient;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import net.dongliu.apk.parser.ApkFile;
 import net.dongliu.apk.parser.bean.ApkMeta;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
@@ -48,7 +47,7 @@ public class DoctorApkController {
      * @param request
      * @return
      */
-    @ApiOperation(value = "addPackage", notes = "addPackage")
+    @ApiOperation(value = "addPackage", notes = "新增包")
     @RequestMapping(value = "add", method = RequestMethod.POST)
     @ResponseBody
     @SystemControllerLog("addPackage")
@@ -156,6 +155,7 @@ public class DoctorApkController {
      */
     @ApiOperation(value = "findPage", notes = "findPage")
     @RequestMapping(value = "findPage", method = RequestMethod.POST)
+    @ApiImplicitParam(name = "page",value = "分页", dataType = "integer", paramType = "query")
     @ResponseBody
 //    @TestAnn("获取apklist")
     @SystemControllerLog("获取apklist")
